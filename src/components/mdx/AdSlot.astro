@@ -1,0 +1,24 @@
+---
+import { siteConfig } from "../../../site.config";
+interface Props { position?: "after-intro" | "mid" | "end" | "sidebar"; }
+const position = Astro.props.position ?? "mid";
+const slot = position === "after-intro"
+  ? siteConfig.adsense.slots.afterIntro
+  : position === "end"
+    ? siteConfig.adsense.slots.endArticle
+    : position === "sidebar"
+      ? siteConfig.adsense.slots.sidebar
+      : siteConfig.adsense.slots.midArticle;
+const enabled = Boolean(siteConfig.adsense.publisherId && slot);
+---
+{enabled && (
+  <aside class="ad-slot" aria-label="광고">
+    <ins class="adsbygoogle" style="display:block" data-ad-client={siteConfig.adsense.publisherId} data-ad-slot={slot} data-ad-format="auto" data-full-width-responsive="true" />
+  </aside>
+)}
+{enabled && (
+  <script is:inline async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${siteConfig.adsense.publisherId}`} crossorigin="anonymous"></script>
+)}
+{import.meta.env.DEV && !enabled && (
+  <aside class="ad-placeholder">광고 슬롯 ({position}) — site.config.ts 의 게시자 ID와 슬롯 ID가 비어 있습니다.</aside>
+)}

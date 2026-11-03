@@ -1,0 +1,11 @@
+---
+import Base from "../layouts/Base.astro";
+import { siteConfig } from "../../site.config";
+---
+<Base title="없는 페이지" description={siteConfig.description} path="/404/" noindex>
+  <main id="content" class="wrap page-narrow">
+    <h1>페이지를 찾지 못했습니다</h1>
+    <p>주소가 바뀌었거나 아직 발행되지 않은 글입니다.</p>
+    <p><a href="/">홈으로</a> · <a href="/search/">검색</a></p>
+  </main>
+</Base>

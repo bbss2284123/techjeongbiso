@@ -1,0 +1,55 @@
+---
+import Base from "../layouts/Base.astro";
+import { siteConfig } from "../../site.config";
+---
+<Base title="검색" description={`${siteConfig.name} 글 검색`} path="/search/">
+  <main id="content" class="wrap search-page" data-pagefind-body>
+    <h1>검색</h1>
+    <form class="side-search" action="/search/" method="get">
+      <input id="q" type="search" name="q" placeholder="궁금한 내용을 검색해보세요" aria-label="검색어" />
+      <button type="submit">검색</button>
+    </form>
+    <div id="out"></div>
+  </main>
+</Base>
+<script is:inline>
+  const input = document.querySelector("#q");
+  const out = document.querySelector("#out");
+  const params = new URLSearchParams(location.search);
+  if (params.get("q") && input) input.value = params.get("q") ?? "";
+  async function run() {
+    if (!out || !input) return;
+    const query = input.value.trim();
+    if (!query) {
+      out.textContent = "검색어를 입력하세요.";
+      return;
+    }
+    try {
+      const pagefind = await import("/pagefind/pagefind.js");
+      const found = await pagefind.search(query);
+      const rows = await Promise.all(found.results.slice(0, 8).map((row) => row.data()));
+      out.replaceChildren();
+      if (!rows.length) {
+        const empty = document.createElement("p");
+        empty.textContent = "해당하는 글이 없습니다.";
+        out.append(empty);
+        return;
+      }
+      for (const row of rows) {
+        const box = document.createElement("article");
+        box.className = "result";
+        const link = document.createElement("a");
+        link.href = row.url;
+        link.textContent = row.meta.title || row.url;
+        const excerpt = document.createElement("p");
+        excerpt.innerHTML = row.excerpt;
+        box.append(link, excerpt);
+        out.append(box);
+      }
+    } catch {
+      out.textContent = "검색 색인은 사이트를 빌드한 뒤에 생깁니다.";
+    }
+  }
+  input?.addEventListener("change", run);
+  if (input?.value) run();
+</script>

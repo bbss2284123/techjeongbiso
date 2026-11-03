@@ -1,0 +1,44 @@
+---
+import Base from "../../layouts/Base.astro";
+import Card from "../../components/Card.astro";
+import { siteConfig, categoryById, absoluteUrl } from "../../../site.config";
+import { allPublished, postPath } from "../../lib/posts";
+import { formatDot } from "../../lib/dates";
+
+export async function getStaticPaths() {
+  const posts = await allPublished();
+  return siteConfig.categories.map((category) => ({
+    params: { category: category.id },
+    props: { posts: posts.filter((post) => post.data.category === category.id) },
+  }));
+}
+const { category } = Astro.params;
+const { posts } = Astro.props;
+const meta = categoryById(category ?? "");
+const pageSize = siteConfig.postsPerPage;
+const visible = posts.slice(0, pageSize);
+const pages = Math.ceil(posts.length / pageSize);
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: meta?.name,
+  description: meta?.description,
+  url: absoluteUrl(`/category/${category}/`),
+};
+---
+<Base title={meta?.name ?? "분류"} description={meta?.description ?? siteConfig.description} path={`/category/${category}/`} current={category} jsonLd={[jsonLd]}>
+  <main id="content" class="wrap">
+    <h1>{meta?.name}</h1>
+    <p>{meta?.description}</p>
+    {visible.length === 0 ? (
+      <div class="empty-board"><p>이 분류의 발행 글이 아직 없습니다.</p></div>
+    ) : (
+      <div class="cards">
+        {visible.map((post) => (
+          <Card href={postPath(post.id)} title={post.data.title} date={formatDot(post.data.date)} category={post.data.category} image={`/thumb/posts/${post.id}/card.png`} alt={`${post.data.title} 대표 이미지`} />
+        ))}
+      </div>
+    )}
+    {pages > 1 && <p><a href={`/category/${category}/2/`}>다음 글</a></p>}
+  </main>
+</Base>

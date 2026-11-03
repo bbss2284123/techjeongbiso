@@ -1,0 +1,9 @@
+---
+interface Props { dir?: "up" | "down" | "left" | "right"; x: string; y: string; }
+const { dir = "right", x, y } = Astro.props;
+---
+<span class={`arrow arrow-${dir}`} style={`left:${x};top:${y}`} aria-hidden="true">
+  <svg viewBox="0 0 48 48" width="46" height="46">
+    <path d="M8 24h26M26 12l12 12-12 12" fill="none" stroke="#FA712D" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+</span>

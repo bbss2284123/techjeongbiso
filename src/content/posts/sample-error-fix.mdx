@@ -1,0 +1,108 @@
+---
+title: "오류 해결 글에 쓰는 초안 예시"
+description: "발행하지 않는 초안입니다. 오류 해결 글에는 증상, 기기와 버전, 검증 상태, 단계별 화면을 이 순서로 적습니다. 확인하지 않은 메뉴는 적지 않습니다."
+date: "2026-11-03"
+updated: "2026-11-03"
+draft: true
+category: "smartphone"
+tags: ["초안", "글형식"]
+kind: "error-fix"
+device: "지정하지 않음"
+os: "지정하지 않음"
+app: "해당 없음"
+appVersion: "해당 없음"
+verification: "미검증"
+verifiedDate: "2026-11-03"
+symptoms: "이 초안은 특정 기기의 증상을 설명하지 않습니다. 발행 글에서는 화면에 보인 오류 문구를 그대로 적습니다."
+quickAnswer: "발행 글에서는 가장 안전하고 짧은 조치를 여기에 적습니다."
+steps:
+  - title: "화면 자리"
+    body: "각 단계 바로 아래에 화면을 넣고, 누를 위치를 짧은 문장으로 적습니다."
+  - title: "다음 화면 자리"
+    body: "다음 화면도 같은 크기로 붙이고, 재현한 그림이면 뱃지를 유지합니다."
+  - title: "결과 화면 자리"
+    body: "성공했는지 볼 화면 자리를 남깁니다. 확인하지 않았으면 성공이라고 적지 않습니다."
+sources:
+  - title: "출처 칸 예시, 삼성전자 고객지원"
+    url: "https://www.samsung.com/sec/support/"
+  - title: "출처 칸 예시, Microsoft 지원"
+    url: "https://support.microsoft.com/ko-kr"
+heroImage: "/thumb/posts/sample-error-fix/card.png"
+images:
+  - id: "s1"
+    src: "/posts/sample-error-fix/step-1.png"
+    alt: "오류 해결 글 초안의 첫 화면 자리표시자. 기기 화면이 아닙니다."
+    caption: "이 자리는 나중에 화면으로 바꿉니다. 지금은 그려 넣은 재현 이미지입니다."
+    type: "reproduction"
+    badge: true
+  - id: "s2"
+    src: "/posts/sample-error-fix/step-2.png"
+    alt: "오류 해결 글 초안의 다음 화면 자리표시자. 기기 화면이 아닙니다."
+    caption: "다음 단계의 화면 자리입니다. 실제 메뉴를 그린 그림이 아닙니다."
+    type: "reproduction"
+    badge: true
+  - id: "s3"
+    src: "/posts/sample-error-fix/step-3.png"
+    alt: "오류 해결 글 초안의 결과 화면 자리표시자. 기기 화면이 아닙니다."
+    caption: "결과 화면 자리입니다. 성공 여부를 확인한 그림이 아닙니다."
+    type: "reproduction"
+    badge: true
+featured: false
+articleId: "tech-draft-0000"
+errorCode: null
+reproduced: false
+dataLossRisk: false
+recheckRequired: true
+thumbTitle: "오류 해결\n글 초안"
+thumbSubtitle: "발행하지 않는 형식 초안"
+검색어: "오류 해결"
+근거: []
+---
+
+오류 해결 글은 증상과 가장 빠른 해결을 먼저 보여 주고, 바로 화면 단계를 붙입니다.
+
+## 첫째 단계. 화면 자리
+
+<Shot
+  id="s1"
+  src="/posts/sample-error-fix/step-1.png"
+  alt="오류 해결 글 초안의 첫 화면 자리표시자. 기기 화면이 아닙니다."
+  caption="이 자리는 나중에 화면으로 바꿉니다. 지금은 그려 넣은 재현 이미지입니다."
+  type="reproduction"
+  badge={true}
+>
+  <Marker n="1" x="42%" y="36%" />
+  <HighlightBox x="8%" y="28%" w="46%" h="28%" />
+</Shot>
+
+발행 글에서는 누를 버튼 이름을 이 문장에 적습니다.
+
+## 둘째 단계. 다음 화면 자리
+
+<Shot
+  id="s2"
+  src="/posts/sample-error-fix/step-2.png"
+  alt="오류 해결 글 초안의 다음 화면 자리표시자. 기기 화면이 아닙니다."
+  caption="다음 단계의 화면 자리입니다. 실제 메뉴를 그린 그림이 아닙니다."
+  type="reproduction"
+  badge={true}
+/>
+
+메뉴 위치가 다르면 그 차이만 적습니다.
+
+## 셋째 단계. 결과 화면 자리
+
+<Shot
+  id="s3"
+  src="/posts/sample-error-fix/step-3.png"
+  alt="오류 해결 글 초안의 결과 화면 자리표시자. 기기 화면이 아닙니다."
+  caption="결과 화면 자리입니다. 성공 여부를 확인한 그림이 아닙니다."
+  type="reproduction"
+  badge={true}
+>
+  <Arrow dir="down" x="46%" y="18%" />
+</Shot>
+
+## 해결되지 않는다면
+
+공식 지원으로 넘깁니다. 초기화 앞에는 백업을 적습니다.

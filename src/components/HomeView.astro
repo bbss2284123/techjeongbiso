@@ -1,0 +1,152 @@
+---
+import { siteConfig } from "../../site.config";
+import Card from "./Card.astro";
+
+interface CardData {
+  href: string;
+  title: string;
+  date: string;
+  category: string;
+  image: string;
+  alt: string;
+}
+interface PopularData {
+  href: string;
+  title: string;
+}
+interface Props {
+  cards: CardData[];
+  popular: PopularData[];
+  visualPages?: number;
+  notice?: string;
+  devHints?: boolean;
+}
+const { cards, popular, visualPages, notice, devHints = false } = Astro.props;
+---
+<main id="content" class="wrap" data-home data-pagefind-body>
+  <section class="tiles" aria-label="분류 바로가기">
+    {siteConfig.categories.map((category) => (
+      <a class="tile" href={`/category/${category.id}/`} style={`--tile:${category.tile}`}>
+        <img src={`/icons/${category.id}.svg`} alt="" width="48" height="48" />
+        <span>{category.name}</span>
+      </a>
+    ))}
+  </section>
+  <div class="layout">
+    <section>
+      <div class="section-head"><span class="bar" aria-hidden="true"></span><h1>최신 글</h1></div>
+      <div class="filters" role="tablist" aria-label="글 분류">
+        <button type="button" class="is-on" data-filter="all" aria-pressed="true">전체</button>
+        {siteConfig.categories.map((category) => (
+          <button type="button" data-filter={category.id} aria-pressed="false">{category.name}</button>
+        ))}
+      </div>
+      {cards.length === 0 && (
+        <div class="empty-board">
+          <p>검수를 마친 글이 올라오면 이 자리에 카드가 채워집니다.</p>
+          {devHints && <p class="dev-note">개발 서버에서 <a href="/preview/home/">홈 시안</a>과 <a href="/draft/sample-error-fix/">초안 글</a>을 볼 수 있습니다.</p>}
+        </div>
+      )}
+      <div class="cards">
+        {cards.map((card) => (
+          <Card {...card} />
+        ))}
+      </div>
+      <p id="filter-empty" class="empty-board" hidden>이 분류의 글이 아직 없습니다.</p>
+      <nav class="pager" aria-label="페이지" data-visual-pages={visualPages} hidden={cards.length === 0 && !visualPages}></nav>
+    </section>
+    <aside class="side">
+      <form class="side-search" action="/search/" method="get">
+        <input type="search" name="q" placeholder="궁금한 내용을 검색해보세요" aria-label="검색어" />
+        <button type="submit">검색</button>
+      </form>
+      <section class="panel">
+        <h2>
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V10M10 19V5M16 19v-7M22 19H2" stroke="#0962EB" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          인기 글
+        </h2>
+        {popular.length === 0 && <p>아직 발행된 글이 없습니다.</p>}
+        {popular.map((item, index) => (
+          <a class="popular-item" href={item.href}><span class="rank">{index + 1}</span><span>{item.title}</span></a>
+        ))}
+      </section>
+      <section class="panel">
+        <h2>
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h6l2 2h10v10a2 2 0 0 1-2 2H3z" fill="none" stroke="#0962EB" stroke-width="2"/></svg>
+          자주 보는 카테고리
+        </h2>
+        {siteConfig.categories.map((category) => (
+          <a class="cat-row" href={`/category/${category.id}/`}>
+            <img src={`/icons/${category.id}.svg`} alt="" width="22" height="22" />
+            <span class="grow">{category.name}</span>
+            <span class="chev-muted" aria-hidden="true">›</span>
+          </a>
+        ))}
+      </section>
+      <section class="bookmark-card">
+        <h2><span class="star" aria-hidden="true">★</span> 테크정비소 즐겨찾기 추가</h2>
+        <p>자주 찾는 문제 해결 정보를 더 빠르게 확인하세요.</p>
+        <button class="bookmark-btn" type="button" data-open-bookmark>☆ 즐겨찾기에 추가하기</button>
+      </section>
+    </aside>
+  </div>
+  {notice && <p class="dev-note">{notice}</p>}
+</main>
+<script is:inline>
+  const root = document.querySelector("[data-home]");
+  if (root) {
+    const buttons = [...root.querySelectorAll("[data-filter]")];
+    const cards = [...root.querySelectorAll(".card")];
+    const pager = root.querySelector(".pager");
+    const filterEmpty = root.querySelector("#filter-empty");
+    const per = 6;
+    let filter = "all";
+    let page = 1;
+    const visual = Number(pager?.dataset.visualPages || 0);
+    function render() {
+      const matched = cards.filter((card) => filter === "all" || card.dataset.category === filter);
+      const computed = matched.length === 0 ? 0 : Math.ceil(matched.length / per);
+      const pages = Math.max(computed, visual || 0);
+      if (pages && page > pages) page = pages;
+      cards.forEach((card) => { card.hidden = true; });
+      if (page >= 1 && page <= computed) {
+        matched.slice((page - 1) * per, page * per).forEach((card) => { card.hidden = false; });
+      }
+      if (filterEmpty) {
+        const show = (filter !== "all" && matched.length === 0) || (computed > 0 && page > computed);
+        filterEmpty.hidden = !show;
+        filterEmpty.textContent = page > computed && computed > 0 ? "이 페이지에는 카드가 없습니다." : "이 분류의 글이 아직 없습니다.";
+      }
+      if (!pager) return;
+      pager.hidden = pages < 2;
+      pager.replaceChildren();
+      const add = (label, target, current, disabled) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = label;
+        if (current) button.setAttribute("aria-current", "page");
+        button.disabled = disabled;
+        button.addEventListener("click", () => { page = target; render(); });
+        pager.append(button);
+      };
+      if (pages >= 2) {
+        add("<", Math.max(1, page - 1), false, page === 1);
+        for (let i = 1; i <= pages; i += 1) add(String(i), i, i === page, false);
+        add(">", Math.min(pages, page + 1), false, page === pages);
+      }
+    }
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        filter = button.dataset.filter || "all";
+        page = 1;
+        buttons.forEach((item) => {
+          const on = item === button;
+          item.classList.toggle("is-on", on);
+          item.setAttribute("aria-pressed", String(on));
+        });
+        render();
+      });
+    });
+    render();
+  }
+</script>

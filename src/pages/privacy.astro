@@ -1,0 +1,13 @@
+---
+import Base from "../layouts/Base.astro";
+import { siteConfig } from "../../site.config";
+---
+<Base title="개인정보처리방침" description="테크정비소 개인정보처리방침" path="/privacy/">
+  <main id="content" class="wrap page-narrow" data-pagefind-body>
+    <h1>개인정보처리방침</h1>
+    <p>시행일 {siteConfig.legalUpdated}.</p>
+    <p>회원 가입은 받지 않습니다. 글에 계정, 전화, 메일, 결제 정보가 찍히면 가리고 올립니다.</p>
+    <p>광고 ID, 방문 분석 ID, 사이트 인증 코드는 site.config.ts 에 있습니다. 칸이 비어 있으면 해당 스크립트를 넣지 않습니다.</p>
+    <p>문의는 {siteConfig.contactEmail} 로 보냅니다.</p>
+  </main>
+</Base>

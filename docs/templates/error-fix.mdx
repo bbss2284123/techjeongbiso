@@ -1,0 +1,82 @@
+---
+title: "(제품) (증상) 해결 방법"
+description: "오류 해결 글을 발행할 때 쓰는 설명입니다. 증상, 기기, 버전, 확인한 순서를 80자에서 120자 사이로 적습니다. 이 문장은 예시 길이입니다."
+date: "2026-11-03"
+updated: "2026-11-03"
+draft: true
+category: "smartphone"
+tags: ["증상", "제품"]
+kind: "error-fix"
+device: "(기기 이름)"
+os: "(운영체제와 버전)"
+app: "(앱 이름 또는 해당 없음)"
+appVersion: "(앱 버전 또는 해당 없음)"
+verification: "미검증"
+verifiedDate: "2026-11-03"
+symptoms: "(화면에 보인 오류 문구와 안 되는 기능을 그대로 적습니다.)"
+quickAnswer: "(가장 빠른 해결. 한두 문장. 초기화보다 안전한 조치를 먼저.)"
+steps:
+  - title: "(실제 메뉴 이름)"
+    body: "(누를 버튼과 그 위치를 적습니다.)"
+  - title: "(다음 조치)"
+    body: "(다음 화면에서 할 일을 적습니다.)"
+  - title: "(결과 확인)"
+    body: "(해결됐을 때 보이는 화면을 적습니다.)"
+sources:
+  - title: "(공식 도움말 제목)"
+    url: "https://www.samsung.com/sec/support/"
+heroImage: "/thumb/posts/(slug)/card.png"
+images:
+  - id: "s1"
+    src: "/posts/(slug)/step-1.png"
+    alt: "(화면에 무엇이 보이는지. 재현 이미지라면 실제 캡처라고 쓰지 않습니다.)"
+    caption: "(바로 아래에서 누를 메뉴를 한두 문장으로 적습니다.)"
+    type: "reproduction"
+    badge: true
+  - id: "s2"
+    src: "/posts/(slug)/step-2.png"
+    alt: "(두 번째 화면 설명)"
+    caption: "(두 번째 동작)"
+    type: "capture"
+    badge: false
+  - id: "s3"
+    src: "/posts/(slug)/step-3.png"
+    alt: "(결과 화면 설명)"
+    caption: "(성공했을 때 보이는 것)"
+    type: "capture"
+    badge: false
+featured: false
+articleId: "tech-0000"
+errorCode: null
+reproduced: false
+dataLossRisk: false
+recheckRequired: true
+thumbTitle: "(썸네일 첫 줄)\n(둘째 줄)"
+thumbSubtitle: "(짧은 부제)"
+검색어: "오류 해결"
+근거: []
+---
+
+증상과 가장 빠른 해결은 프론트매터에 적으면 첫 화면에 나옵니다. 그 앞의 본문은 3문장, 300자 아래로 두세요. 인사, 예고, 마무리 문단은 넣지 않습니다.
+
+## 1단계. (실제 메뉴 이름)
+
+<Shot id="s1" src="/posts/(slug)/step-1.png" alt="(화면 설명)" caption="(누를 버튼)" type="reproduction" badge={true}>
+  <Marker n="1" x="20%" y="30%" />
+  <HighlightBox x="12%" y="18%" w="40%" h="20%" />
+  <Arrow dir="down" x="48%" y="24%" />
+</Shot>
+
+(이 단계에서 누를 곳만 적습니다.)
+
+## 2단계. (다음 조치)
+
+<Shot id="s2" src="/posts/(slug)/step-2.png" alt="(두 번째 화면 설명)" caption="(두 번째 동작)" type="capture" badge={false} />
+
+## 3단계. (결과 확인)
+
+<Shot id="s3" src="/posts/(slug)/step-3.png" alt="(결과 화면 설명)" caption="(성공했을 때 보이는 것)" type="capture" badge={false} />
+
+## 해결되지 않는다면
+
+공식 지원으로 넘기는 문장만 적습니다. 숫자(버전, 횟수, 용량)는 `work/(slug)/facts.yaml` 과 같아야 합니다.

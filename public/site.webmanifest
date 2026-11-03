@@ -1,0 +1,15 @@
+{
+  "name": "테크정비소",
+  "short_name": "테크정비소",
+  "description": "오류 화면부터 해결 순서까지 보여주는 디지털 사용설명서",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F4F7FB",
+  "theme_color": "#0962EB",
+  "lang": "ko",
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/brand/symbol.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
