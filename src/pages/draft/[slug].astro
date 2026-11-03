@@ -1,0 +1,15 @@
+---
+import { getCollection, render } from "astro:content";
+import PostView from "../../components/PostView.astro";
+import { relatedPosts } from "../../lib/posts";
+
+export async function getStaticPaths() {
+  if (import.meta.env.PROD) return [];
+  const posts = (await getCollection("posts")).filter((post) => post.data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const posts = (await getCollection("posts")).filter((item) => !item.data.draft);
+const { Content } = await render(post);
+---
+<PostView post={post} Content={Content} related={relatedPosts(post, posts)} />

@@ -1,0 +1,39 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Card from "../../../components/Card.astro";
+import { siteConfig, categoryById } from "../../../../site.config";
+import { allPublished, postPath } from "../../../lib/posts";
+import { formatDot } from "../../../lib/dates";
+
+export async function getStaticPaths() {
+  const posts = await allPublished();
+  const paths: { params: { category: string; page: string }; props: { posts: typeof posts } }[] = [];
+  for (const category of siteConfig.categories) {
+    const matched = posts.filter((post) => post.data.category === category.id);
+    const pages = Math.ceil(matched.length / siteConfig.postsPerPage);
+    for (let page = 2; page <= pages; page += 1) {
+      paths.push({ params: { category: category.id, page: String(page) }, props: { posts: matched } });
+    }
+  }
+  return paths;
+}
+const { category, page } = Astro.params;
+const { posts } = Astro.props;
+const meta = categoryById(category ?? "");
+const current = Number(page);
+const start = (current - 1) * siteConfig.postsPerPage;
+const visible = posts.slice(start, start + siteConfig.postsPerPage);
+---
+<Base title={`${meta?.name} ${current}`} description={meta?.description ?? siteConfig.description} path={`/category/${category}/${current}/`} current={category}>
+  <main id="content" class="wrap">
+    <h1>{meta?.name}</h1>
+    <div class="cards">
+      {visible.map((post) => (
+        <Card href={postPath(post.id)} title={post.data.title} date={formatDot(post.data.date)} category={post.data.category} image={`/thumb/posts/${post.id}/card.png`} alt={`${post.data.title} 대표 이미지`} />
+      ))}
+    </div>
+    <p>
+      {current > 2 ? <a href={`/category/${category}/${current - 1}/`}>이전</a> : <a href={`/category/${category}/`}>이전</a>}
+    </p>
+  </main>
+</Base>

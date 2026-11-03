@@ -1,0 +1,28 @@
+---
+import { categoryById } from "../../site.config";
+
+interface Props {
+  href: string;
+  title: string;
+  date: string;
+  category: string;
+  image: string;
+  alt: string;
+}
+const { href, title, date, category, image, alt } = Astro.props;
+const meta = categoryById(category);
+---
+<a class="card" href={href} data-category={category}>
+  <span class="card-media"><img src={image} alt={alt} width="1200" height="675" loading="lazy" /></span>
+  <span class="card-title">{title}</span>
+  <span class="card-meta">
+    <span>
+      <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      {date}
+    </span>
+    <span>
+      <img src={`/icons/${category}.svg`} alt="" width="16" height="16" />
+      {meta?.name}
+    </span>
+  </span>
+</a>

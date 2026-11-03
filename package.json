@@ -1,0 +1,32 @@
+{
+  "name": "techjeongbiso",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "thumbnails": "tsx scripts/thumbnails.ts",
+    "build": "tsx scripts/thumbnails.ts && astro build && pagefind --site dist && tsx scripts/check-html.ts",
+    "preview": "astro preview",
+    "check": "tsx scripts/thumbnails.ts && tsx --test scripts/content-check.test.ts scripts/publish-due.test.ts scripts/thumbnails.test.ts && tsx scripts/check-content.ts",
+    "test": "npm run check"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/rss": "^4.0.19",
+    "astro": "^5.18.2",
+    "gray-matter": "^4.0.3",
+    "satori": "^0.18.3",
+    "sharp": "^0.34.5",
+    "yaml": "^2.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "pagefind": "^1.4.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}

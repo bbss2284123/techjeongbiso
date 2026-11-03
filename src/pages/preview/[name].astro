@@ -1,0 +1,41 @@
+---
+import Base from "../../layouts/Base.astro";
+import HomeView from "../../components/HomeView.astro";
+import { siteConfig } from "../../../site.config";
+
+export async function getStaticPaths() {
+  if (import.meta.env.PROD) return [];
+  return [{ params: { name: "home" } }];
+}
+
+const cards = [
+  ["스마트폰 발열, 원인과 해결 방법", "2026.10.30", "smartphone", "/brand/samples/01-smartphone.png"],
+  ["윈도우가 느려졌을 때 속도 올리는 설정 방법", "2026.10.28", "pc", "/brand/samples/02-pc.png"],
+  ["ChatGPT 실전 활용법, 일상에서 바로 쓰는 예시", "2026.10.27", "ai", "/brand/samples/03-ai.png"],
+  ["자동차 엔진 경고등이 떴을 때 원인과 대처 방법", "2026.10.26", "car", "/brand/samples/04-car.png"],
+  ["앱 실행이 안 될 때 오류 해결 순서 정리", "2026.10.24", "apps", "/brand/samples/05-apps.png"],
+  ["삭제한 사진 복구하는 방법", "2026.10.22", "pc", "/brand/samples/06-photo.png"],
+];
+const popular = [
+  "갤럭시 배터리 빨리 닳는 이유와 절약 방법",
+  "윈도우 업데이트 오류 해결 방법",
+  "ChatGPT로 업무 효율 높이는 방법",
+  "자동차 경고등 종류와 의미 총정리",
+  "삭제한 사진 복구하는 가장 쉬운 방법",
+];
+---
+<Base title={`${siteConfig.name} 시안`} description={siteConfig.description} path="/preview/home/" noindex current="home">
+  <HomeView
+    visualPages={5}
+    notice="이 화면의 카드와 인기 글은 발행된 글이 아닙니다. 브랜드 썸네일 시안입니다."
+    cards={cards.map(([title, date, category, image]) => ({
+      href: `/category/${category}/`,
+      title,
+      date,
+      category,
+      image,
+      alt: `${title} 썸네일 시안`,
+    }))}
+    popular={popular.map((title) => ({ href: `/search/?q=${encodeURIComponent(title)}`, title }))}
+  />
+</Base>

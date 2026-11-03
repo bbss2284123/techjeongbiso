@@ -1,0 +1,28 @@
+---
+import Base from "../../layouts/Base.astro";
+import Card from "../../components/Card.astro";
+import { allPublished, postPath } from "../../lib/posts";
+import { formatDot } from "../../lib/dates";
+
+export async function getStaticPaths() {
+  const posts = await allPublished();
+  const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
+  return tags.map((tag) => ({
+    params: { tag },
+    props: { posts: posts.filter((post) => post.data.tags.includes(tag)) },
+  }));
+}
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+<Base title={`#${tag}`} description={`${tag} 글`} path={`/tag/${encodeURIComponent(tag ?? "")}/`}>
+  <main id="content" class="wrap">
+    <h1>#{tag}</h1>
+    <div class="cards">
+      {posts.map((post) => (
+        <Card href={postPath(post.id)} title={post.data.title} date={formatDot(post.data.date)} category={post.data.category} image={`/thumb/posts/${post.id}/card.png`} alt={`${post.data.title} 대표 이미지`} />
+      ))}
+    </div>
+    <p><a href="/">홈으로</a></p>
+  </main>
+</Base>

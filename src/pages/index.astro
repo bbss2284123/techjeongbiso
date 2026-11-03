@@ -1,0 +1,46 @@
+---
+import Base from "../layouts/Base.astro";
+import HomeView from "../components/HomeView.astro";
+import { siteConfig, absoluteUrl } from "../../site.config";
+import { allPublished, postPath } from "../lib/posts";
+import { formatDot } from "../lib/dates";
+
+const posts = await allPublished();
+const featured = posts.filter((post) => post.data.featured);
+const popularSource = featured.length ? featured : posts;
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    description: siteConfig.description,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${siteConfig.url}/search/?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    logo: absoluteUrl("/brand/symbol-512.png"),
+  },
+];
+---
+<Base title={siteConfig.name} description={siteConfig.description} path="/" ogImage="/brand/og-default.png" jsonLd={jsonLd} current="home">
+  <HomeView
+    devHints={import.meta.env.DEV}
+    cards={posts.map((post) => ({
+      href: postPath(post.id),
+      title: post.data.title,
+      date: formatDot(post.data.date),
+      category: post.data.category,
+      image: `/thumb/posts/${post.id}/card.png`,
+      alt: `${post.data.title} 대표 이미지`,
+    }))}
+    popular={popularSource.slice(0, 5).map((post) => ({ href: postPath(post.id), title: post.data.title }))}
+  />
+</Base>

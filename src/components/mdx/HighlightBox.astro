@@ -1,0 +1,5 @@
+---
+interface Props { x: string; y: string; w: string; h: string; }
+const { x, y, w, h } = Astro.props;
+---
+<span class="hl-box" style={`left:${x};top:${y};width:${w};height:${h}`} aria-hidden="true"></span>

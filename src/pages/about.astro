@@ -1,0 +1,24 @@
+---
+import Base from "../layouts/Base.astro";
+import { siteConfig } from "../../site.config";
+---
+<Base title="소개" description={siteConfig.tagline} path="/about/">
+  <main id="content" class="wrap page-narrow" data-pagefind-body>
+    <h1>테크정비소</h1>
+    <p>{siteConfig.tagline}</p>
+    <p>오류가 났을 때 증상과 같은 화면을 찾고, 그 화면의 버튼 순서를 따라 갈 수 있게 씁니다. 뉴스나 생활 정보 모음이 아닙니다.</p>
+    <h2>다루는 범위</h2>
+    <ul>
+      {siteConfig.categories.map((category) => <li><a href={`/category/${category.id}/`}>{category.name}</a> — {category.description}</li>)}
+    </ul>
+    <h2>검증 표시</h2>
+    <ul>
+      <li>직접 재현·검증: 같은 기기와 버전에서 과정을 다시 밟아 보았습니다.</li>
+      <li>공식 문서 확인: 제조사나 서비스의 공식 문서로 확인했고, 직접 재현하지는 않았습니다.</li>
+      <li>미검증: 아직 확인하지 않은 초안입니다. 발행 목록에 올리지 않습니다.</li>
+    </ul>
+    <p>그려 넣은 화면은 재현 이미지로 표시합니다. 실제 캡처처럼 설명하지 않습니다.</p>
+    <h2>하지 않는 일</h2>
+    <p>이메일 구독 창, 홍보용 큰 배너, 생활 팁 분류는 두지 않습니다. 즐겨찾기는 브라우저가 허용하는 저장 방법만 안내합니다.</p>
+  </main>
+</Base>

@@ -1,0 +1,5 @@
+---
+interface Props { n: string | number; x: string; y: string; }
+const { n, x, y } = Astro.props;
+---
+<span class="marker" style={`left:${x};top:${y}`} aria-hidden="true">{n}</span>

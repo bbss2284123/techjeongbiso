@@ -1,0 +1,11 @@
+---
+import Base from "../layouts/Base.astro";
+import { siteConfig } from "../../site.config";
+---
+<Base title="글쓴이" description={siteConfig.author.bio} path="/author/">
+  <main id="content" class="wrap page-narrow" data-pagefind-body>
+    <h1>{siteConfig.author.name}</h1>
+    <p>{siteConfig.author.bio}</p>
+    <p>이름을 바꿀 때는 site.config.ts 의 author.name 만 고칩니다.</p>
+  </main>
+</Base>
