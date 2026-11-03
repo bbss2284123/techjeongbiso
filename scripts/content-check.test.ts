@@ -127,10 +127,10 @@ test("단계 밖 본문 길이를 센다", () => {
   assert.ok([...proseOutsideSteps(body)].length < 200);
 });
 
-test("초안 예시는 검수를 통과", () => {
+test("현재 글은 검수를 통과", () => {
   const posts = loadPosts();
-  assert.equal(posts.length, 1);
-  assert.equal(posts[0]?.data.draft, true);
+  const draft = posts.find((post) => post.id === "sample-error-fix");
+  assert.equal(draft?.data.draft, true);
   const errors = checkPosts(posts).filter((issue) => issue.level === "error");
   assert.deepEqual(errors, []);
 });
