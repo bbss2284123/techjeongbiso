@@ -23,6 +23,7 @@ const { post, Content, related } = Astro.props;
 const category = categoryById(post.data.category);
 const toc = [...(post.body ?? "").matchAll(/^##\s+(.+)$/gm)].map((match) => match[1].trim());
 const url = absoluteUrl(post.data.draft ? `/draft/${post.id}/` : postPath(post.id));
+const quickAnswer = post.data.quickAnswer;
 const appLine = post.data.appVersion === post.data.app || post.data.appVersion === "해당 없음"
   ? post.data.app
   : `${post.data.app} ${post.data.appVersion}`;
@@ -94,23 +95,23 @@ const jsonLd = [
       {formatDot(post.data.date)} · 확인 {formatDot(post.data.verifiedDate)} · {authorName(post)}
       {post.data.recheckRequired ? " · 다시 확인이 필요합니다" : ""}
     </p>
-    <figure class="hero-figure">
-      <img src={post.data.heroImage} alt={`${post.data.title} 대표 이미지`} width="1200" height="675" />
-      <figcaption>분류 배경 위에 제목을 올린 대표 이미지입니다. 오류 화면이 아닙니다.</figcaption>
-    </figure>
     <section class="symptom">
       <strong>증상 요약</strong>
       <p>{post.data.symptoms}</p>
+    </section>
+    <section class="easiest">
+      <strong>가장 빠른 해결</strong>
+      <p>{quickAnswer}</p>
     </section>
     <dl class="env-grid">
       <div class="env-cell"><dt>기기</dt><dd>{post.data.device}</dd></div>
       <div class="env-cell"><dt>OS · 버전</dt><dd>{post.data.os}</dd></div>
       <div class="env-cell"><dt>앱 · 버전</dt><dd>{appLine}</dd></div>
     </dl>
-    <section class="easiest">
-      <strong>가장 먼저 시도할 방법</strong>
-      <p>{post.data.easiestFix}</p>
-    </section>
+    <figure class="hero-figure">
+      <img src={post.data.heroImage} alt={`${post.data.title} 대표 이미지`} width="1200" height="675" />
+      <figcaption>분류 배경 위에 제목을 올린 대표 이미지입니다. 오류 화면이 아닙니다.</figcaption>
+    </figure>
     {post.data.dataLossRisk && (
       <aside class="callout callout-warn"><p>이 절차는 데이터 삭제나 초기화로 이어질 수 있습니다. 시작 전에 백업하세요.</p></aside>
     )}

@@ -58,7 +58,8 @@ export const postSchema = z
     verification: z.enum(verificationLabels),
     verifiedDate: dateString,
     symptoms: z.string().min(8),
-    easiestFix: z.string().min(8),
+    /** 첫 화면에 보이는 가장 빠른 해결. */
+    quickAnswer: z.string().min(8),
     steps: z
       .array(
         z

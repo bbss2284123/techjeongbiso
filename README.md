@@ -34,7 +34,7 @@ npm run preview
 | 환경 변수 | `NODE_VERSION=22` |
 | 프로덕션 도메인 | `techjeongbiso.com` |
 
-GitHub Actions `Scheduled publish` 가 30분마다 07:00–22:30 KST 에 돌아갑니다. 저장소 비밀 `CF_PAGES_DEPLOY_HOOK` 이 없으면 배포를 건너뛰고 성공으로 끝납니다. 초안(`draft: true`)은 배포 대상이 아닙니다.
+GitHub Actions `Scheduled publish` 가 30분마다 07:00–22:30 KST 에 돌아갑니다. 저장소 비밀 `CF_PAGES_DEPLOY_HOOK` 이 없으면 배포를 건너뛰고 성공으로 끝납니다. 초안(`draft: true`)은 배포 대상이 아닙니다. `publishAt`(없으면 `date`)이 아직 오지 않은 글은 빌드에 나오지 않고, 그 시각이 지난 뒤의 예약 실행이 배포 훅을 호출합니다. 같은 한국 날짜에 공개되는 글은 `site.config.ts` 의 `maxPostsPerDay`(2)까지입니다. 더 빠른 `publishAt` 두 편만 남고, 넘는 글은 배포 대상에서 빠지며 검수도 실패합니다.
 
 ## 디렉터리
 
@@ -56,7 +56,17 @@ GitHub Actions `Scheduled publish` 가 30분마다 07:00–22:30 KST 에 돌아�
 2. `work/<slug>/facts.yaml` 을 만듭니다. 본문·제목·증상·환경·캡션에 숫자가 없으면 `facts: []` 로 둡니다.
 3. 화면 파일을 `public/posts/<slug>/` 에 넣습니다.
 4. 프론트매터 `images` 와 본문 `<Shot>` 의 `id`, `src`, `alt`, `caption`, `type`, `badge` 를 같게 적습니다.
-5. `npm run check` 를 통과한 뒤 `draft: false` 로 발행합니다. 미검증 글은 초안으로 남아야 합니다.
+5. `npm run check` 를 통과한 뒤 `draft: false` 로 발행합니다. 미검증 글은 초안으로 남아야 합니다. 같은 한국 날짜에 발행 글은 `maxPostsPerDay`(기본 2편)까지입니다. 그 시각 전에는 `publishAt` 을 미래로 두면 그 시각에 예약 배포가 사이트를 다시 만듭니다.
+
+## 글 쓰는 규칙
+
+해결부터 씁니다. 인사, 배경 이야기, 예고, 맺음 에세이는 넣지 않습니다.
+
+- 첫 화면은 제목 다음에 **증상 요약**과 **가장 빠른 해결**(`quickAnswer`)입니다. 환경은 그 아래에 붙습니다.
+- 본문 첫 제목 앞의 글은 3문장, 300자 이하입니다. 넘으면 `npm run check` 가 멈춥니다.
+- 그 다음은 번호 단계입니다. 단계마다 화면을 붙입니다.
+- 문장은 짧게 씁니다. `마무리` 제목, `안녕하세요`, `오늘은 ~에 대해 알아보겠습니다`, `많은 분들이 궁금해하시는`, `도움이 되셨길 바랍니다`, `이상으로` 는 금지입니다.
+- 단계 제목 밖 본문이 2500자를 넘으면 검수가 경고합니다. 발행은 막지 않고, 해결에 필요 없는 설명이 끼었는지 보라고 남깁니다.
 
 대표 이미지는 직접 그리지 않아도 됩니다. `npm run thumbnails` 와 빌드가 분류 배경 위에 제목, 분류 알약, 부제를 올립니다. 글마다 다른 그림이 필요하면 1200×675 파일을 두고 `thumbBackground: "/posts/<slug>/bg.png"` 를 적습니다. 제목 줄바꿈은 `thumbTitle` 에 `\n` 을 넣습니다.
 
@@ -70,7 +80,7 @@ GitHub Actions `Scheduled publish` 가 30분마다 07:00–22:30 KST 에 돌아�
 - `kind`: `error-fix` 또는 `ai-howto`
 - `device`, `os`, `app`, `appVersion`
 - `verification`: `직접 재현·검증` / `공식 문서 확인` / `미검증`
-- `symptoms`, `easiestFix`, `steps`
+- `symptoms`, `quickAnswer`(가장 빠른 해결), `steps`
 - `sources`: 공식 도움말 https 주소. 비우면 발행되지 않습니다.
 - `heroImage`, `images[]` (`id`, `src`, `alt`, `caption`, `type`, `badge`)
 - `근거`: 원장의 `F1` 같은 번호. 숫자가 없으면 `[]`

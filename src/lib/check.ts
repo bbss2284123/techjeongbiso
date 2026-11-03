@@ -2,6 +2,8 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { parse as parseYaml } from "yaml";
+import { siteConfig } from "../../site.config";
+import { publishDay } from "./publish-due";
 import { postSchema, publishDateOf, type PostFrontmatter, type PostImage } from "./post-schema";
 
 export interface Fact {
@@ -63,7 +65,7 @@ export function claimText(data: PostFrontmatter, body: string): string {
     data.app,
     data.appVersion,
     data.symptoms,
-    data.easiestFix,
+    data.quickAnswer,
     data.thumbTitle ?? "",
     data.thumbSubtitle ?? "",
     ...data.steps.flatMap((step) => [step.title, step.body]),
@@ -271,6 +273,85 @@ export function shotSyncErrors(body: string, images: PostImage[]): string[] {
   return errors;
 }
 
+export function plainProse(text: string): string {
+  return text
+    .replace(/<Shot\b[^>]*\/>/g, " ")
+    .replace(/<Shot\b[\s\S]*?<\/Shot>/g, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+    .replace(/\[[^\]]*\]\([^)]*\)/g, " ")
+    .replace(/[#>*_`|]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/** 첫 제목 앞의 본문. 인사와 예고 없이 짧게 둡니다. */
+export function introText(body: string): string {
+  return plainProse(body.split(/^#{1,3}\s+/m)[0] ?? "");
+}
+
+export function sentenceCount(text: string): number {
+  const parts = text
+    .split(/(?<=[\.!?。])\s+/)
+    .map((part) => part.trim())
+    .filter((part) => part.length > 0);
+  return parts.length;
+}
+
+export function introErrors(body: string): string[] {
+  const intro = introText(body);
+  const errors: string[] = [];
+  const chars = [...intro].length;
+  if (chars > 300) errors.push(`도입은 300자 이하입니다. 지금 ${chars}자입니다.`);
+  const sentences = sentenceCount(intro);
+  if (sentences > 3) errors.push(`도입은 3문장 이하입니다. 지금 ${sentences}문장입니다.`);
+  return errors;
+}
+
+function isStepHeading(heading: string): boolean {
+  return /단계/.test(heading) || /^\s*#{1,3}\s*\d+/.test(heading);
+}
+
+/** 단계 제목 아래를 뺀 본문. 긴 에세이면 경고합니다. */
+export function proseOutsideSteps(body: string): string {
+  const withoutShots = body.replace(/<Shot\b[^>]*\/>/g, " ").replace(/<Shot\b[\s\S]*?<\/Shot>/g, " ");
+  const chunks = withoutShots.split(/^(#{1,3}\s+.+)$/m);
+  let text = chunks[0] ?? "";
+  for (let index = 1; index < chunks.length; index += 2) {
+    const heading = chunks[index] ?? "";
+    const content = chunks[index + 1] ?? "";
+    if (isStepHeading(heading)) continue;
+    text += `\n${content}`;
+  }
+  return plainProse(text);
+}
+
+export function paddingHeadingErrors(body: string): string[] {
+  const hits = body.match(/^#{1,3}\s*마무리\s*$/gm) ?? [];
+  return hits.length ? ["'마무리' 제목으로 맺음 에세이를 붙이지 않습니다."] : [];
+}
+
+export function dailyCapErrors(
+  posts: { id: string; data: { draft: boolean; date: string; publishAt?: string } }[],
+  max = siteConfig.maxPostsPerDay,
+): string[] {
+  const groups = new Map<string, string[]>();
+  for (const post of posts) {
+    if (post.data.draft) continue;
+    const day = publishDay(post.data.publishAt ?? post.data.date);
+    const list = groups.get(day) ?? [];
+    list.push(post.id);
+    groups.set(day, list);
+  }
+  const errors: string[] = [];
+  for (const [day, ids] of groups) {
+    if (ids.length > max) {
+      errors.push(`${day} (KST) 발행 글이 ${ids.length}편입니다. 하루 ${max}편까지입니다. ${ids.join(", ")}`);
+    }
+  }
+  return errors;
+}
+
 export function loadFacts(file: string): Fact[] {
   const doc = parseYaml(readFileSync(file, "utf8")) as { facts?: Fact[] };
   return doc.facts ?? [];
@@ -346,6 +427,23 @@ export function checkPosts(posts: LoadedPost[], root = process.cwd()): CheckIssu
     for (const message of keywordPlacementErrors(post.data, post.body)) {
       issues.push({ level: "error", file: post.id, message });
     }
+    if (!post.data.quickAnswer.trim()) {
+      issues.push({ level: "error", file: post.id, message: "가장 빠른 해결(quickAnswer)이 없습니다." });
+    }
+    for (const message of introErrors(post.body)) {
+      issues.push({ level: "error", file: post.id, message });
+    }
+    for (const message of paddingHeadingErrors(post.body)) {
+      issues.push({ level: "error", file: post.id, message });
+    }
+    const outside = [...proseOutsideSteps(post.body)].length;
+    if (outside > 2500) {
+      issues.push({
+        level: "info",
+        file: post.id,
+        message: `단계 밖 본문이 ${outside}자입니다. 2500자를 넘기면 해결에 필요 없는 설명이 낀 것입니다.`,
+      });
+    }
     if (post.raw.toLowerCase().includes(["today", "moneytip"].join("")) || post.raw.includes(["오늘의", " 머니팁"].join(""))) {
       issues.push({ level: "error", file: post.id, message: "다른 사이트 이름이나 주소를 넣지 않습니다." });
     }
@@ -362,6 +460,10 @@ export function checkPosts(posts: LoadedPost[], root = process.cwd()): CheckIssu
         issues.push({ level: "error", file: post.id, message: "시리즈 순번이 겹칩니다." });
       }
     }
+  }
+
+  for (const message of dailyCapErrors(posts)) {
+    issues.push({ level: "error", file: "발행량", message });
   }
 
   const ledgerPath = path.join(root, "work/ledger.json");

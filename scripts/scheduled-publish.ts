@@ -1,6 +1,6 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
-import { dueBetween, type PublishStamp } from "../src/lib/publish-due";
+import { dueBetween, selectWithinDailyCap, type PublishStamp } from "../src/lib/publish-due";
 import { siteConfig } from "../site.config";
 
 const hook = process.env.CF_PAGES_DEPLOY_HOOK?.trim();
@@ -71,7 +71,13 @@ async function pingIndexNow(urls: string[]): Promise<void> {
 
 const now = new Date();
 const since = await lastSuccess(now);
-const due = dueBetween(readStamps(), now, since);
+const stamps = readStamps();
+const visible = new Set(selectWithinDailyCap(stamps, siteConfig.maxPostsPerDay).map((post) => post.id));
+const due = dueBetween(stamps, now, since).filter((post) => visible.has(post.id));
+const held = dueBetween(stamps, now, since).filter((post) => !visible.has(post.id));
+if (held.length) {
+  console.log(`하루 ${siteConfig.maxPostsPerDay}편을 넘어 공개하지 않습니다: ${held.map((post) => post.id).join(", ")}`);
+}
 if (!due.length) {
   console.log("새로 공개할 글이 없어 배포를 건너뜁니다.");
   process.exit(0);

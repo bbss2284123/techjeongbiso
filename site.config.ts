@@ -35,6 +35,8 @@ export const siteConfig = {
   contactEmail: "contact@techjeongbiso.com",
   legalUpdated: "2026-11-03",
   postsPerPage: 6,
+  /** 한국 시간 기준 하루 발행 상한. 같은 날 이 편수를 넘기면 검수가 실패하고, 예약 공개도 넘긴 글을 올리지 않습니다. */
+  maxPostsPerDay: 2,
   /** TODO: IndexNow 키. 비우면 키 파일을 만들지 않고 핑도 보내지 않습니다. */
   indexNowKey: "",
   author: {

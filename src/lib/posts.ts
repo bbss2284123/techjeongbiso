@@ -1,6 +1,7 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import { siteConfig } from "../../site.config";
 import { isReleased } from "./dates";
+import { publishKey, selectWithinDailyCap } from "./publish-due";
 
 export type PostEntry = CollectionEntry<"posts">;
 
@@ -14,8 +15,13 @@ export async function allEntries(): Promise<PostEntry[]> {
 
 export async function allPublished(): Promise<PostEntry[]> {
   const posts = await getCollection("posts");
-  return posts
-    .filter((post) => !post.data.draft && isReleased(publishDate(post)))
+  const released = posts.filter((post) => !post.data.draft && isReleased(publishDate(post)));
+  const visible = selectWithinDailyCap(
+    released.map((post) => ({ id: post.id, at: publishKey(publishDate(post)), post })),
+    siteConfig.maxPostsPerDay,
+  );
+  return visible
+    .map((item) => item.post)
     .sort((a, b) => publishDate(b).localeCompare(publishDate(a)) || b.data.date.localeCompare(a.data.date));
 }
 

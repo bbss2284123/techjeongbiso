@@ -4,10 +4,13 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import {
   checkPosts,
+  dailyCapErrors,
   findBanned,
   imageRuleErrors,
+  introErrors,
   loadPosts,
   missingNumbers,
+  proseOutsideSteps,
   shotSyncErrors,
   shotTags,
 } from "../src/lib/check";
@@ -97,6 +100,31 @@ test("문제 해결 글은 이미지가 세 장보다 적으면 막음", () => {
   assert.ok(sample);
   const errors = imageRuleErrors({ ...sample.data, images: sample.data.images.slice(0, 2) }, sample.body);
   assert.ok(errors.some((message) => message.includes("3장")));
+});
+
+test("도입이 세 문장을 넘으면 막음", () => {
+  const errors = introErrors("첫 문장입니다. 둘째 문장입니다. 셋째 문장입니다. 넷째 문장입니다.\n\n## 1단계");
+  assert.ok(errors.some((message) => message.includes("3문장")));
+});
+
+test("가장 빠른 해결이 없으면 스키마가 막음", () => {
+  const sample = loadPosts()[0]?.data;
+  assert.ok(sample);
+  const broken = { ...sample } as { quickAnswer?: string };
+  delete broken.quickAnswer;
+  assert.equal(postSchema.safeParse(broken).success, false);
+});
+
+test("같은 한국 날짜에 발행 글이 세 편이면 막음", () => {
+  const row = (id: string, day: string) => ({ id, data: { draft: false, date: day } });
+  const errors = dailyCapErrors([row("a", "2026-11-03"), row("b", "2026-11-03"), row("c", "2026-11-03")], 2);
+  assert.equal(errors.length, 1);
+  assert.equal(dailyCapErrors([row("a", "2026-11-03"), row("b", "2026-11-03"), { id: "draft", data: { draft: true, date: "2026-11-03" } }], 2).length, 0);
+});
+
+test("단계 밖 본문 길이를 센다", () => {
+  const body = `${"가".repeat(100)}\n\n## 1단계. 메뉴\n\n${"나".repeat(3000)}\n`;
+  assert.ok([...proseOutsideSteps(body)].length < 200);
 });
 
 test("초안 예시는 검수를 통과", () => {

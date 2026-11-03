@@ -14,7 +14,7 @@ appVersion: "(무료 또는 유료, 확인한 화면)"
 verification: "미검증"
 verifiedDate: "2026-11-03"
 symptoms: "(이 글로 할 수 있는 일을 한 문단으로 적습니다. 오류 글이 아니면 막힌 증상을 억지로 만들지 않습니다.)"
-easiestFix: "(가입이나 로그인 다음, 가장 먼저 눌러 볼 메뉴를 적습니다.)"
+quickAnswer: "(가장 빠른 해결. 가입 다음 가장 먼저 누를 메뉴를 한 문장으로.)"
 steps:
   - title: "공식 사이트 또는 앱 열기"
     body: "(주소 또는 스토어 이름과 첫 화면을 적습니다.)"
@@ -55,8 +55,18 @@ recheckRequired: true
 근거: []
 ---
 
-AI 사용법 글도 화면이 세 장 미만이면 발행되지 않습니다. 가입, 첫 작업, 저장 또는 오류 화면을 각각 붙이세요.
+할 일과 가장 빠른 다음 동작을 프론트매터에 적으면 첫 화면에 나옵니다. 본문 도입은 3문장, 300자 아래입니다.
 
-요금과 버튼 이름은 확인한 날짜의 화면만 적습니다. 확인하지 못한 유료 기능은 적지 않습니다.
+## 1단계. 공식 화면 열기
 
-썸네일은 따로 그리지 않아도 됩니다. `npm run thumbnails` 가 분류별 글자 없는 배경 위에 제목을 올립니다. 글마다 다른 그림이 있으면 `thumbBackground` 에 1200x675 파일 경로를 적습니다.
+<Shot id="open" src="/posts/(slug)/open.png" alt="(첫 화면 설명)" caption="(어디를 누르는지)" type="capture" badge={false} />
+
+## 2단계. 가입 또는 로그인
+
+<Shot id="login" src="/posts/(slug)/login.png" alt="(로그인 화면 설명. 계정은 가림)" caption="(가입 또는 로그인 버튼)" type="capture" badge={false} />
+
+## 3단계. 첫 작업
+
+<Shot id="result" src="/posts/(slug)/result.png" alt="(실행 결과 화면 설명)" caption="(결과에서 볼 곳)" type="capture" badge={false} />
+
+확인한 날짜의 버튼 이름만 적습니다. 확인하지 못한 유료 기능과 맺음 문단은 넣지 않습니다.
