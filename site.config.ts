@@ -159,8 +159,7 @@ export const siteConfig = {
   verification: {
     /** TODO: Google Search Console 인증 코드 */
     google: "",
-    /** TODO: 네이버 서치어드바이저 인증 코드 */
-    naver: "",
+    naver: "8e93d00b9e8710efe96a998aa846fbd567c8453e",
     /** TODO: Bing 웹마스터 인증 코드 */
     bing: "",
   },

@@ -141,7 +141,7 @@ GitHub Actions `Scheduled publish` 가 30분마다 07:00–22:30 KST 에 돌아�
 - `adsense.publisherId` 와 슬롯 ID
 - `ga4Id`
 - `cloudflareWebAnalyticsToken`
-- `verification.google`, `verification.naver`, `verification.bing`
+- `verification.google`, `verification.bing` (`verification.naver` 는 서치어드바이저 코드가 들어가 있습니다)
 - `indexNowKey`
 - GitHub 비밀 `CF_PAGES_DEPLOY_HOOK`
 
