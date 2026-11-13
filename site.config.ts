@@ -32,7 +32,7 @@ export const siteConfig = {
     "스마트폰, PC, 앱, AI, 자동차 전자장치의 오류를 증상과 화면 순서대로 정리하는 디지털 사용설명서입니다.",
   lang: "ko",
   locale: "ko_KR",
-  contactEmail: "contact@techjeongbiso.com",
+  contactEmail: "baekhyun071500@gmail.com",
   legalUpdated: "2026-11-03",
   postsPerPage: 6,
   /** 한국 시간 기준 하루 발행 상한. 같은 날 이 편수를 넘기면 검수가 실패하고, 예약 공개도 넘긴 글을 올리지 않습니다. */
