@@ -1,0 +1,6 @@
+facts:
+  - id: F1
+    value: "156.0.8078.47"
+    source: "https://support.google.com/chrome/answer/95414?hl=ko"
+    checkedAt: "2026-11-14"
+    note: "이번 화면에 쓴 한국어 Chrome의 정보 화면에 나온 버전. 고객센터는 Chrome 정보에서 이 번호를 확인한다고 안내한다."
