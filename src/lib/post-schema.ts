@@ -15,7 +15,7 @@ export const postImageSchema = z
     alt: z.string().refine((value) => value.trim().length >= 4, "alt는 4자 이상"),
     caption: z.string().refine((value) => value.trim().length >= 4, "caption은 4자 이상"),
     type: z.enum(imageTypes),
-    /** 재현 이미지는 true. 화면에는 '재현 이미지' 뱃지가 붙습니다. 캡처는 false. */
+    /** 재현 이미지는 true, 화면 캡처는 false. 화면 오버레이 뱃지는 쓰지 않습니다. */
     badge: z.boolean(),
   })
   .strict()
@@ -55,7 +55,7 @@ export const postSchema = z
     os: z.string().min(1),
     app: z.string().min(1),
     appVersion: z.string().min(1),
-    verification: z.enum(verificationLabels),
+    verification: z.enum(verificationLabels).optional(),
     verifiedDate: dateString,
     symptoms: z.string().min(8),
     /** 첫 화면에 보이는 가장 빠른 해결. */
@@ -111,7 +111,7 @@ export const postSchema = z
         ctx.addIssue({ code: "custom", message: `출처는 https 주소여야 합니다: ${source.url}` });
       }
     }
-    if (post.reproduced && post.verification !== "직접 재현·검증") {
+    if (post.reproduced && post.verification && post.verification !== "직접 재현·검증") {
       ctx.addIssue({
         code: "custom",
         message: "reproduced가 true이면 검증 상태는 직접 재현·검증이어야 합니다.",

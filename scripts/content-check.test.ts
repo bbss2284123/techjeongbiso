@@ -67,11 +67,12 @@ test("Shot 속성 읽기", () => {
   assert.equal(tags[0]?.attrs.type, "reproduction");
 });
 
-test("검증 라벨이 빠지면 스키마가 막음", () => {
+test("검증 필드는 없어도 되고, 잘못된 값만 막음", () => {
   const sample = loadPosts()[0]?.data;
   assert.ok(sample);
-  const broken = { ...sample, verification: "확인 안 함" };
-  assert.equal(postSchema.safeParse(broken).success, false);
+  const { verification: _ignored, ...without } = sample;
+  assert.equal(postSchema.safeParse(without).success, true);
+  assert.equal(postSchema.safeParse({ ...sample, verification: "확인 안 함" }).success, false);
 });
 
 test("출처가 비면 스키마가 막음", () => {

@@ -27,11 +27,7 @@ const quickAnswer = post.data.quickAnswer;
 const appLine = post.data.appVersion === post.data.app || post.data.appVersion === "해당 없음"
   ? post.data.app
   : `${post.data.app} ${post.data.appVersion}`;
-const sourceNote = post.data.verification === "직접 재현·검증"
-  ? "아래 공식 문서와 직접 재현으로 확인했습니다."
-  : post.data.verification === "공식 문서 확인"
-    ? "아래 공식 문서로 확인했고, 같은 환경에서 직접 재현하지는 않았습니다."
-    : "아래 주소는 참고로 적어 둔 공식 문서입니다. 이 글의 단계를 검증하지 않았습니다.";
+const sourceNote = "아래는 이 글에서 참고한 공식 문서입니다.";
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -88,13 +84,8 @@ const jsonLd = [
     </nav>
     <div class="kicker">
       <a class="cat-pill" href={`/category/${post.data.category}/`}>{category?.name}</a>
-      <span class="vbadge" data-v={post.data.verification}>{post.data.verification}</span>
     </div>
     <h1>{post.data.title}</h1>
-    <p class="meta-line">
-      {formatDot(post.data.date)} · 확인 {formatDot(post.data.verifiedDate)} · {authorName(post)}
-      {post.data.recheckRequired ? " · 다시 확인이 필요합니다" : ""}
-    </p>
     <section class="symptom">
       <strong>증상 요약</strong>
       <p>{post.data.symptoms}</p>

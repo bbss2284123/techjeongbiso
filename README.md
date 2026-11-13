@@ -79,9 +79,9 @@ GitHub Actions `Scheduled publish` 가 30분마다 07:00–22:30 KST 에 돌아�
 - `draft`, `category` (`smartphone` `pc` `ai` `apps` `car`)
 - `kind`: `error-fix` 또는 `ai-howto`
 - `device`, `os`, `app`, `appVersion`
-- `verification`: `직접 재현·검증` / `공식 문서 확인` / `미검증`
+- `verification`(선택): `직접 재현·검증` / `공식 문서 확인` / `미검증`. 화면에 뱃지나 문구로 넣지 않습니다.
 - `symptoms`, `quickAnswer`(가장 빠른 해결), `steps`
-- `sources`: 공식 도움말 https 주소. 비우면 발행되지 않습니다.
+- `sources`: 꼭 필요한 공식 도움말 https 주소 1~2개. 비우면 발행되지 않습니다.
 - `heroImage`, `images[]` (`id`, `src`, `alt`, `caption`, `type`, `badge`)
 - `근거`: 원장의 `F1` 같은 번호. 숫자가 없으면 `[]`
 - `reproduced`, `dataLossRisk`, `recheckRequired`, `featured`, `articleId`
@@ -95,10 +95,9 @@ GitHub Actions `Scheduled publish` 가 30분마다 07:00–22:30 KST 에 돌아�
 - 문제 해결 글과 사용법 글 모두 이미지가 3장 미만이면 안 됩니다.
 - 파일은 `public` 아래의 사이트 경로여야 하고, 빠진 파일이 있으면 안 됩니다.
 - `alt` 와 `caption` 이 비면 안 됩니다.
-- `verification` 이 없으면 안 됩니다.
-- `type: reproduction` 이면 `badge: true` 이고, 본문 Shot 에도 `badge={true}` 가 있어야 합니다. 화면에는 **재현 이미지** 뱃지가 붙고, 캡처처럼 설명하면 안 됩니다.
-- `type: capture` 이면 `badge: false` 입니다. 화면에는 **화면 캡처**가 붙습니다.
-- 출처가 비면 안 됩니다.
+- `type: reproduction` 이면 `badge: true` 이고, 본문 Shot 에도 `badge={true}` 가 있어야 합니다. 캡처처럼 설명하면 안 됩니다. 화면 오버레이 뱃지는 붙지 않습니다.
+- `type: capture` 이면 `badge: false` 입니다.
+- 출처는 꼭 필요한 공식 문서 1~2개입니다. 비우면 안 됩니다.
 - 미검증 글은 `draft: true` 가 아니면 발행되지 않습니다.
 - 본문·환경·캡션의 숫자는 `facts.yaml` 에 없는 값이면 안 됩니다.
 

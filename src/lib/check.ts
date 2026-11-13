@@ -211,7 +211,6 @@ export function shotTags(body: string): ShotTag[] {
 
 export function imageRuleErrors(data: PostFrontmatter, body: string, root = process.cwd()): string[] {
   const errors: string[] = [];
-  if (!data.verification) errors.push("검증 라벨이 없습니다.");
   if (!data.sources.length) errors.push("출처가 비어 있습니다.");
   if (data.images.length < 3) {
     const kind = data.kind === "error-fix" ? "문제 해결 글" : "사용법 글";

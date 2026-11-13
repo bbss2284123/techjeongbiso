@@ -8,14 +8,12 @@ interface Props {
   badge?: boolean;
 }
 const { src, alt, caption = "", type = "capture" } = Astro.props;
-const reproduction = type === "reproduction";
 ---
 <figure class={`shot shot-${type}`}>
   <div class="shot-stage">
     <button class="shot-open" type="button" data-full={src} data-alt={alt} aria-label={`${alt} 크게 보기`}>
       <img src={src} alt={alt} loading="lazy" />
     </button>
-    {reproduction ? <span class="repro-badge">재현 이미지</span> : <span class="capture-badge">화면 캡처</span>}
     <slot />
   </div>
   {caption && <figcaption>{caption}</figcaption>}
