@@ -103,7 +103,7 @@ export default defineConfig({
         "astro:build:done": ({ dir }) => {
           if (!siteConfig.indexNowKey) return;
           const file = new URL(`${siteConfig.indexNowKey}.txt`, dir);
-          writeFileSync(file, siteConfig.indexNowKey);
+          writeFileSync(file, `${siteConfig.indexNowKey}\n`);
         },
       },
     },

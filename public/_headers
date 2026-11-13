@@ -6,3 +6,11 @@
 
 /brand/*
   Cache-Control: public, max-age=604800
+
+# Production pages.dev and preview deployments must not be indexed.
+# The custom domain (techjeongbiso.com) is not matched by these host rules.
+https://techjeongbiso.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:hash.techjeongbiso.pages.dev/*
+  X-Robots-Tag: noindex

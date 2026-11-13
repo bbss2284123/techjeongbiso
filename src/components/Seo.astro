@@ -11,8 +11,11 @@ interface Props {
   modified?: string;
   jsonLd?: unknown[];
   noindex?: boolean;
+  robots?: string;
 }
-const { title, description, canonical, ogImage, type = "website", published, modified, jsonLd = [], noindex = false } = Astro.props;
+const { title, description, canonical, ogImage, type = "website", published, modified, jsonLd = [], noindex = false, robots } = Astro.props;
+const robotsContent = robots
+  ?? (noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
 const envGa = import.meta.env.PUBLIC_GA_ID?.trim();
 const ga4Id = envGa || siteConfig.ga4Id;
 const image = ogImage ? absoluteUrl(ogImage) : absoluteUrl("/brand/og-default.png");
@@ -21,7 +24,7 @@ const fullTitle = title === siteConfig.name ? title : `${title} | ${siteConfig.n
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
-<meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+<meta name="robots" content={robotsContent} />
 <meta property="og:type" content={type} />
 <meta property="og:locale" content={siteConfig.locale} />
 <meta property="og:site_name" content={siteConfig.name} />

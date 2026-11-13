@@ -4,10 +4,13 @@ import { allPublished, postPath } from "../lib/posts";
 
 export async function GET(_context: APIContext) {
   const posts = await allPublished();
-  const staticPages = ["/", "/about/", "/author/", "/privacy/", "/terms/", "/contact/", "/search/"];
+  const staticPages = ["/", "/about/", "/author/", "/privacy/", "/terms/", "/contact/"];
+  const categoriesWithPosts = siteConfig.categories.filter((category) =>
+    posts.some((post) => post.data.category === category.id),
+  );
   const urls = [
     ...staticPages.map((path) => ({ loc: absoluteUrl(path), lastmod: siteConfig.legalUpdated })),
-    ...siteConfig.categories.map((category) => ({ loc: absoluteUrl(`/category/${category.id}/`), lastmod: siteConfig.legalUpdated })),
+    ...categoriesWithPosts.map((category) => ({ loc: absoluteUrl(`/category/${category.id}/`), lastmod: siteConfig.legalUpdated })),
     ...posts.map((post) => ({ loc: absoluteUrl(postPath(post.id)), lastmod: post.data.updated })),
   ];
   const body = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls

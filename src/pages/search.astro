@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import { siteConfig } from "../../site.config";
 ---
-<Base title="검색" description={`${siteConfig.name} 글 검색`} path="/search/">
+<Base title="검색" description={`${siteConfig.name} 글 검색`} path="/search/" robots="noindex, follow">
   <main id="content" class="wrap search-page" data-pagefind-body>
     <h1>검색</h1>
     <form class="side-search" action="/search/" method="get">
