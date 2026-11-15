@@ -1,0 +1,157 @@
+---
+title: "크롬 팝업 차단 해제 방법, 특정 사이트만 허용하는 순서"
+description: "크롬 팝업 차단 해제 방법입니다. 창이 안 뜰 때 설정에서 필요한 사이트만 팝업을 허용하는 순서를 화면 그림과 함께 차례대로 따라 하면 됩니다."
+date: "2026-11-15"
+updated: "2026-11-15"
+publishAt: "2026-11-15T20:11"
+draft: false
+category: "apps"
+tags: ["크롬 팝업 차단 해제", "크롬 팝업 허용", "크롬 설정"]
+kind: "error-fix"
+device: "컴퓨터의 Chrome"
+os: "한국어 화면"
+app: "Chrome"
+appVersion: "156.0.8078.47"
+verification: "공식 문서 확인"
+verifiedDate: "2026-11-15"
+symptoms: "버튼을 눌러도 새 창이 뜨지 않고, 주소창 오른쪽에 팝업 차단 표시가 뜹니다."
+quickAnswer: "크롬 주소창에 chrome://settings/content/popups 를 열고, '팝업 전송 및 리디렉션 사용이 허용됨' 옆 추가를 눌러 해당 사이트 주소를 넣습니다. 그 사이트만 팝업이 열립니다."
+steps:
+  - title: "팝업 설정 화면 열기"
+    body: "주소창에 chrome://settings/content/popups 를 입력하고 엔터를 누릅니다."
+  - title: "허용됨 옆 추가 누르기"
+    body: "'팝업 전송 및 리디렉션 사용이 허용됨' 줄 오른쪽의 추가를 누릅니다."
+  - title: "사이트 주소 넣기"
+    body: "사이트 칸에 주소를 넣고 추가를 누릅니다."
+  - title: "목록 확인"
+    body: "허용됨 아래에 사이트가 보이면 끝입니다."
+  - title: "사이트별 설정으로 바꾸기"
+    body: "사이트별 화면에서 '팝업 및 리디렉션'을 허용으로 바꿀 수도 있습니다."
+sources:
+  - title: "Chrome 고객센터, Chrome에서 팝업을 차단 또는 허용하기"
+    url: "https://support.google.com/chrome/answer/95472?hl=ko"
+heroImage: "/thumb/posts/chrome-popup-blocked/card.png"
+images:
+  - id: "open"
+    src: "/posts/chrome-popup-blocked/01-open-popup-settings.webp"
+    alt: "크롬 팝업 및 리디렉션 설정 화면. 주소창에 chrome://settings/content/popups 가 입력되어 있습니다."
+    caption: "주소창에 입력하면 팝업 및 리디렉션 설정이 열립니다."
+    type: "capture"
+    badge: false
+  - id: "add"
+    src: "/posts/chrome-popup-blocked/02-click-add-allowed.webp"
+    alt: "크롬 팝업 및 리디렉션 화면에서 팝업 전송 및 리디렉션 사용이 허용됨 줄 오른쪽 추가 단추를 표시한 모습."
+    caption: "두 번째 줄, 허용됨 옆의 추가를 누릅니다."
+    type: "capture"
+    badge: false
+  - id: "dialog"
+    src: "/posts/chrome-popup-blocked/03-add-site-dialog.webp"
+    alt: "크롬 사이트 추가 창에서 사이트 주소 입력칸과 추가 단추를 번호로 표시한 화면."
+    caption: "주소를 넣고 추가를 누릅니다."
+    type: "capture"
+    badge: false
+  - id: "done"
+    src: "/posts/chrome-popup-blocked/04-site-added.webp"
+    alt: "크롬 팝업 전송 및 리디렉션 사용이 허용됨 목록에 사이트가 추가된 모습."
+    caption: "허용됨 아래에 사이트가 보이면 됩니다."
+    type: "capture"
+    badge: false
+  - id: "site"
+    src: "/posts/chrome-popup-blocked/05-site-popup-allow.webp"
+    alt: "크롬 사이트별 설정 화면에서 팝업 및 리디렉션 항목의 선택 상자를 표시한 모습."
+    caption: "사이트별 화면에서는 이 상자를 허용으로 바꿉니다."
+    type: "capture"
+    badge: false
+featured: false
+articleId: "tech-0005"
+errorCode: "팝업 차단"
+reproduced: false
+dataLossRisk: false
+recheckRequired: false
+thumbTitle: "크롬 팝업 차단 해제\n특정 사이트만 허용"
+thumbSubtitle: "화면 보며 따라하기"
+검색어: "크롬 팝업 차단 해제"
+근거: ["F1"]
+---
+
+크롬 팝업 차단 해제가 필요한 이유는 크롬이 처음부터 팝업을 막아 두기 때문입니다. 로그인 창이나 결제 창이 안 뜨면 이 때문일 수 있습니다. 모든 사이트를 풀지 말고 필요한 사이트만 허용합니다.
+
+## 첫째 단계. 팝업 설정 화면 열기
+
+<Shot
+  id="open"
+  src="/posts/chrome-popup-blocked/01-open-popup-settings.webp"
+  alt="크롬 팝업 및 리디렉션 설정 화면. 주소창에 chrome://settings/content/popups 가 입력되어 있습니다."
+  caption="주소창에 입력하면 팝업 및 리디렉션 설정이 열립니다."
+  type="capture"
+  badge={false}
+/>
+
+크롬 주소창에 chrome://settings/content/popups 를 입력하고 엔터를 누릅니다. 기본 동작은 '사이트에서 팝업을 전송하거나 리디렉션을 사용할 수 없음'으로 되어 있습니다.
+
+## 둘째 단계. 허용됨 옆 추가 누르기
+
+<Shot
+  id="add"
+  src="/posts/chrome-popup-blocked/02-click-add-allowed.webp"
+  alt="크롬 팝업 및 리디렉션 화면에서 팝업 전송 및 리디렉션 사용이 허용됨 줄 오른쪽 추가 단추를 표시한 모습."
+  caption="두 번째 줄, 허용됨 옆의 추가를 누릅니다."
+  type="capture"
+  badge={false}
+/>
+
+'팝업 전송 및 리디렉션 사용이 허용됨' 줄 오른쪽의 추가를 누릅니다. 위쪽 '허용되지 않음' 줄의 추가와 헷갈리지 않게 아래쪽을 누릅니다.
+
+## 셋째 단계. 사이트 주소 넣기
+
+<Shot
+  id="dialog"
+  src="/posts/chrome-popup-blocked/03-add-site-dialog.webp"
+  alt="크롬 사이트 추가 창에서 사이트 주소 입력칸과 추가 단추를 번호로 표시한 화면."
+  caption="주소를 넣고 추가를 누릅니다."
+  type="capture"
+  badge={false}
+/>
+
+사이트 칸에 팝업을 열어야 하는 사이트 주소를 넣고 추가를 누릅니다. 예를 들어 example.com 처럼 넣습니다. 칸에 미리 들어 있는 [*.] 는 하위 주소까지 함께 허용한다는 뜻이니 지우지 않아도 됩니다.
+
+## 넷째 단계. 목록 확인
+
+<Shot
+  id="done"
+  src="/posts/chrome-popup-blocked/04-site-added.webp"
+  alt="크롬 팝업 전송 및 리디렉션 사용이 허용됨 목록에 사이트가 추가된 모습."
+  caption="허용됨 아래에 사이트가 보이면 됩니다."
+  type="capture"
+  badge={false}
+/>
+
+'허용됨' 아래에 사이트가 보이면 됩니다. 팝업이 막혔던 페이지로 돌아가 새로고침하고 다시 눌러 봅니다. 없애고 싶으면 줄 오른쪽 점 세 개를 눌러 삭제합니다.
+
+## 다섯째 단계. 사이트별 설정으로 바꾸기
+
+<Shot
+  id="site"
+  src="/posts/chrome-popup-blocked/05-site-popup-allow.webp"
+  alt="크롬 사이트별 설정 화면에서 팝업 및 리디렉션 항목의 선택 상자를 표시한 모습."
+  caption="사이트별 화면에서는 이 상자를 허용으로 바꿉니다."
+  type="capture"
+  badge={false}
+/>
+
+해당 사이트 화면을 연 채로 주소창 왼쪽 아이콘을 누르고 사이트 설정으로 들어가면 이 화면이 나옵니다. '팝업 및 리디렉션' 오른쪽 상자를 '허용'으로 바꾸면 위 방법과 같습니다. 자세한 안내는 [Chrome 고객센터](https://support.google.com/chrome/answer/95472?hl=ko)에 있습니다.
+
+## 그래도 안 되면
+
+- 주소 끝의 .com 같은 부분까지 정확히 넣었는지 봅니다. 다른 주소로 열리는 팝업은 따로 추가해야 합니다.
+- 광고 차단 같은 확장 프로그램이 팝업을 막을 수 있으니 잠시 끄고 다시 해 봅니다.
+- 시크릿 창에서는 설정이 따로 적용되니 일반 창에서 확인합니다.
+- 팝업이 광고처럼 계속 뜨면 허용하지 말고 해당 사이트를 허용 목록에서 지웁니다.
+
+## 자주 묻는 질문
+
+모든 사이트의 팝업을 한 번에 풀 수 있나요? 기본 동작에서 '사이트에서 팝업을 전송하고 리디렉션을 사용할 수 있음'을 고르면 됩니다. 광고 팝업도 함께 열리니 믿는 사이트만 허용하는 편이 낫습니다.
+
+허용했는데 새 탭이 아니라 창이 뜨나요? 사이트가 여는 방식에 따라 다릅니다. 팝업 창이 작게 뜨는 것은 정상입니다.
+
+휴대폰 크롬도 같은 방법인가요? 아닙니다. 이 글은 컴퓨터의 크롬 기준입니다.
