@@ -1,0 +1,11 @@
+facts:
+  - id: F1
+    value: "Windows 11"
+    source: "https://support.microsoft.com/ko-kr/windows/hardware/printer/troubleshooting-offline-printer-problems-in-windows"
+    checkedAt: "2026-11-20"
+    note: "Microsoft 지원의 오프라인 프린터 문제 해결 안내는 Windows 11 기준 설정 경로를 시작, 설정, Bluetooth 및 장치, 프린터 및 스캐너로 적는다."
+  - id: F2
+    value: "30초"
+    source: "https://support.microsoft.com/ko-kr/windows/hardware/printer/troubleshooting-offline-printer-problems-in-windows"
+    checkedAt: "2026-11-20"
+    note: "프린터를 끄고 플러그를 뺀 뒤 30초 정도 기다렸다가 다시 연결하라는 안내."
