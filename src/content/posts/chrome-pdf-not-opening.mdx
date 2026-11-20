@@ -1,0 +1,136 @@
+---
+title: "크롬 PDF 안열림, 파일만 받아질 때 바로 열리게 하는 법"
+description: "크롬 PDF 안열림, 눌러도 화면에 안 열리고 다운로드만 될 때 해결 방법입니다. PDF 문서 설정에서 Chrome에서 PDF 열기를 고르는 순서를 크롬 화면으로 정리했습니다."
+date: "2026-11-21"
+updated: "2026-11-21"
+publishAt: "2026-11-21T08:56"
+draft: false
+category: "apps"
+tags: ["크롬 PDF 안열림", "크롬 PDF 다운로드", "크롬 설정"]
+kind: "error-fix"
+device: "컴퓨터의 Chrome"
+os: "한국어 화면"
+app: "Chrome"
+appVersion: "156.0.8078.47"
+verification: "공식 문서 확인"
+verifiedDate: "2026-11-21"
+symptoms: "PDF 링크를 눌러도 크롬 안에서 열리지 않고 파일만 받아지거나, 빈 탭이 잠깐 떴다가 사라집니다."
+quickAnswer: "주소창에 chrome://settings/content/pdfDocuments 를 열고 'Chrome에서 PDF 열기'를 선택합니다. 그다음 PDF 링크를 다시 누르면 크롬 안에서 바로 열립니다."
+steps:
+  - title: "다운로드 기록 확인"
+    body: "chrome://downloads 를 열어 PDF가 파일로 받아졌는지 봅니다."
+  - title: "PDF 문서 설정 열기"
+    body: "주소창에 chrome://settings/content/pdfDocuments 를 입력합니다."
+  - title: "Chrome에서 PDF 열기 선택"
+    body: "기본 동작에서 'Chrome에서 PDF 열기'를 누릅니다."
+  - title: "PDF 다시 열기"
+    body: "PDF 링크를 다시 눌러 크롬 안에서 열리는지 확인합니다."
+sources:
+  - title: "Chrome 고객센터, Chrome에서 파일 다운로드 문제 해결"
+    url: "https://support.google.com/chrome/answer/95346?hl=ko"
+heroImage: "/thumb/posts/chrome-pdf-not-opening/card.png"
+images:
+  - id: "downloaded"
+    src: "/posts/chrome-pdf-not-opening/01-pdf-downloaded-instead.webp"
+    alt: "크롬 다운로드 기록 화면에서 report.pdf 파일이 열리지 않고 다운로드 목록에 들어가 있는 모습."
+    caption: "PDF가 열리지 않고 이렇게 다운로드 목록에 보이면 설정이 원인입니다."
+    type: "capture"
+    badge: false
+  - id: "setting"
+    src: "/posts/chrome-pdf-not-opening/02-pdf-setting-download.webp"
+    alt: "크롬 설정 PDF 문서 화면에서 PDF 다운로드가 선택되어 있고 Chrome에서 PDF 열기 항목을 표시한 모습."
+    caption: "'PDF 다운로드'가 선택되어 있으면 PDF가 열리지 않고 받아집니다."
+    type: "capture"
+    badge: false
+  - id: "fixed"
+    src: "/posts/chrome-pdf-not-opening/03-pdf-setting-open-in-chrome.webp"
+    alt: "크롬 설정 PDF 문서 화면에서 Chrome에서 PDF 열기가 선택된 모습."
+    caption: "'Chrome에서 PDF 열기'가 선택되면 설정이 끝난 것입니다."
+    type: "capture"
+    badge: false
+  - id: "opened"
+    src: "/posts/chrome-pdf-not-opening/04-pdf-opened-in-chrome.webp"
+    alt: "크롬 탭 안에서 PDF 문서가 열려 견적서 샘플 내용이 보이는 모습."
+    caption: "설정을 바꾼 뒤에는 PDF가 크롬 탭 안에서 열립니다."
+    type: "capture"
+    badge: false
+featured: false
+articleId: "tech-0010"
+errorCode: "PDF 다운로드만 됨"
+reproduced: false
+dataLossRisk: false
+recheckRequired: false
+thumbTitle: "크롬 PDF 안열림\n다운로드만 될 때"
+thumbSubtitle: "화면 보며 따라하기"
+검색어: "크롬 PDF 안열림"
+근거: ["F1"]
+---
+
+크롬 PDF 안열림은 PDF를 눌렀는데 화면에 안 열리고 파일만 받아질 때 생깁니다. 대부분 크롬 설정이 'PDF 다운로드'로 바뀌어 있어서 생기는 일입니다. 아래 순서대로 한 번만 바꾸면 됩니다.
+
+## 첫째 단계. 다운로드 기록 확인
+
+<Shot
+  id="downloaded"
+  src="/posts/chrome-pdf-not-opening/01-pdf-downloaded-instead.webp"
+  alt="크롬 다운로드 기록 화면에서 report.pdf 파일이 열리지 않고 다운로드 목록에 들어가 있는 모습."
+  caption="PDF가 열리지 않고 이렇게 다운로드 목록에 보이면 설정이 원인입니다."
+  type="capture"
+  badge={false}
+/>
+
+주소창에 chrome://downloads 를 입력하고 엔터를 누릅니다. 방금 누른 PDF가 목록에 있으면 크롬이 PDF를 열지 않고 파일로 받은 것입니다. 목록에 없다면 아래 '그래도 안 되면'을 먼저 봅니다.
+
+## 둘째 단계. PDF 문서 설정 열기
+
+<Shot
+  id="setting"
+  src="/posts/chrome-pdf-not-opening/02-pdf-setting-download.webp"
+  alt="크롬 설정 PDF 문서 화면에서 PDF 다운로드가 선택되어 있고 Chrome에서 PDF 열기 항목을 표시한 모습."
+  caption="'PDF 다운로드'가 선택되어 있으면 PDF가 열리지 않고 받아집니다."
+  type="capture"
+  badge={false}
+/>
+
+주소창에 chrome://settings/content/pdfDocuments 를 입력하고 엔터를 누릅니다. 'PDF 문서' 화면이 열립니다. '기본 동작'에서 'PDF 다운로드'가 선택되어 있으면 이것이 원인입니다.
+
+## 셋째 단계. Chrome에서 PDF 열기 선택
+
+<Shot
+  id="fixed"
+  src="/posts/chrome-pdf-not-opening/03-pdf-setting-open-in-chrome.webp"
+  alt="크롬 설정 PDF 문서 화면에서 Chrome에서 PDF 열기가 선택된 모습."
+  caption="'Chrome에서 PDF 열기'가 선택되면 설정이 끝난 것입니다."
+  type="capture"
+  badge={false}
+/>
+
+'Chrome에서 PDF 열기'를 누릅니다. 동그라미가 파란색으로 채워지면 됩니다. 따로 저장 단추는 없습니다.
+
+## 넷째 단계. PDF 다시 열기
+
+<Shot
+  id="opened"
+  src="/posts/chrome-pdf-not-opening/04-pdf-opened-in-chrome.webp"
+  alt="크롬 탭 안에서 PDF 문서가 열려 견적서 샘플 내용이 보이는 모습."
+  caption="설정을 바꾼 뒤에는 PDF가 크롬 탭 안에서 열립니다."
+  type="capture"
+  badge={false}
+/>
+
+PDF 링크를 다시 누릅니다. 이번에는 크롬 탭 안에 문서가 열립니다. 저장하고 싶으면 위쪽의 다운로드 단추를 누릅니다. 이미 받아진 PDF는 다운로드 폴더에서 더블클릭해 열 수 있습니다. 자세한 안내는 [Chrome 고객센터](https://support.google.com/chrome/answer/95346?hl=ko)에 있습니다.
+
+## 그래도 안 되면
+
+- 시크릿 창에서 같은 PDF를 열어 봅니다. 시크릿 창에서 열리면 확장 프로그램이 원인이므로 chrome://extensions 에서 PDF 관련 확장을 끕니다.
+- 다른 PDF 파일도 안 열리는지 확인합니다. 한 파일만 안 되면 파일이 깨진 것일 수 있어 보낸 사람에게 다시 받습니다.
+- 크롬을 완전히 닫았다가 다시 열고 같은 링크를 누릅니다.
+- 회사나 학교 컴퓨터는 관리자가 PDF 설정을 고정했을 수 있습니다. 이때는 관리자에게 문의합니다.
+
+## 자주 묻는 질문
+
+받은 PDF가 열리지 않고 다른 프로그램이 실행돼요. 파일 열기 프로그램이 따로 정해진 것입니다. 파일을 오른쪽 단추로 눌러 '연결 프로그램'에서 원하는 프로그램을 고릅니다.
+
+PDF를 크롬에서 열면 저장은 어떻게 하나요? 문서 위쪽의 다운로드 단추를 누르면 파일로 저장됩니다.
+
+휴대폰 크롬도 같은 방법인가요? 아닙니다. 이 글은 컴퓨터의 크롬 기준입니다.
