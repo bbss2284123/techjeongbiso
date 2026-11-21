@@ -1,0 +1,6 @@
+facts:
+  - id: F1
+    value: "156.0.8078.47"
+    source: "https://support.google.com/chrome/answer/6098869?hl=ko"
+    checkedAt: "2026-11-22"
+    note: "한국어 Chrome 화면. ERR_NAME_NOT_RESOLVED 오류 화면, chrome://net-internals/#dns, chrome://settings/system 에서 확인."
