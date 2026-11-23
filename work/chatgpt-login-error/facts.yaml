@@ -1,0 +1,6 @@
+facts:
+  - id: F1
+    value: "chatgpt.com"
+    source: "https://help.openai.com/en/articles/7426629-why-cant-i-log-in-to-chatgpt"
+    checkedAt: "2026-11-23"
+    note: "한국어 Chrome 화면. chatgpt.com 로그인 창(Google·Apple·휴대 전화 번호·이메일), status.openai.com, chrome://settings/content/all 에서 확인."

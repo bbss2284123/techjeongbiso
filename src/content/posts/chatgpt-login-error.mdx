@@ -1,0 +1,140 @@
+---
+title: "ChatGPT 로그인 안됨, 가입한 방식으로 다시 로그인하는 순서"
+description: "ChatGPT 로그인 안됨 문제는 처음 가입한 방식(구글·애플·전화번호·이메일)으로 다시 로그인하고, OpenAI 상태 페이지와 크롬의 chatgpt.com 쿠키를 확인하세요. 컴퓨터 크롬 화면으로 정리했습니다."
+date: "2026-11-23"
+updated: "2026-11-23"
+publishAt: "2026-11-23T14:11"
+draft: false
+category: "ai"
+tags: ["ChatGPT", "로그인 오류"]
+kind: "error-fix"
+device: "컴퓨터의 Chrome"
+os: "한국어 화면"
+app: "ChatGPT 웹"
+appVersion: "chatgpt.com"
+verification: "공식 문서 확인"
+verifiedDate: "2026-11-23"
+symptoms: "로그인 버튼을 눌러도 들어가지지 않거나, 다른 계정이 열리거나, Wrong authentication method 같은 문구가 뜹니다."
+quickAnswer: "처음 가입할 때 쓴 방식 그대로 로그인하세요. 구글로 가입했다면 'Google 계정으로 계속하기'를 누르고 같은 구글 계정을 고릅니다. 그래도 안 되면 크롬에서 chatgpt.com 쿠키를 지우고 다시 로그인합니다."
+steps:
+  - title: "chatgpt.com에서 로그인 누르기"
+    body: "chatgpt.com 오른쪽 위의 로그인 버튼을 누릅니다."
+  - title: "처음 가입한 방식 고르기"
+    body: "구글·애플·전화번호·이메일 중 가입할 때 쓴 방식을 고릅니다."
+  - title: "서비스 상태 확인"
+    body: "status.openai.com에서 ChatGPT 줄에 장애 표시가 있는지 봅니다."
+  - title: "chatgpt.com 쿠키 지우기"
+    body: "크롬 설정의 모든 사이트에서 chatgpt를 검색하고 휴지통을 누릅니다."
+sources:
+  - title: "OpenAI Help Center, Why can't I log in to ChatGPT?"
+    url: "https://help.openai.com/en/articles/7426629-why-cant-i-log-in-to-chatgpt"
+heroImage: "/thumb/posts/chatgpt-login-error/card.png"
+images:
+  - id: "home"
+    src: "/posts/chatgpt-login-error/chatgpt-home-login-button.webp"
+    alt: "ChatGPT 첫 화면 오른쪽 위 로그인 버튼에 주황색 상자와 파란 번호가 표시되어 있습니다."
+    caption: "오른쪽 위의 '로그인'을 누릅니다."
+    type: "capture"
+    badge: false
+  - id: "method"
+    src: "/posts/chatgpt-login-error/chatgpt-login-method-select.webp"
+    alt: "ChatGPT 로그인 방식 선택 화면 구글 애플 휴대 전화 번호 버튼과 이메일 주소 칸에 파란 번호가 표시되어 있습니다."
+    caption: "가입할 때 쓴 방식을 고릅니다."
+    type: "capture"
+    badge: false
+  - id: "status"
+    src: "/posts/chatgpt-login-error/openai-status-page-check.webp"
+    alt: "OpenAI 서비스 상태 페이지 확인 화면. 전체 상태 안내와 ChatGPT 줄에 파란 번호가 표시되어 있습니다."
+    caption: "맨 위 안내와 ChatGPT 줄을 확인합니다."
+    type: "capture"
+    badge: false
+  - id: "cookie"
+    src: "/posts/chatgpt-login-error/chrome-delete-chatgpt-site-data.webp"
+    alt: "크롬 설정 모든 사이트 화면에서 chatgpt 검색 칸과 chatgpt.com 휴지통 버튼에 파란 번호가 표시되어 있습니다."
+    caption: "chatgpt를 검색하고 휴지통을 누릅니다."
+    type: "capture"
+    badge: false
+featured: false
+articleId: "tech-0013"
+reproduced: false
+dataLossRisk: false
+recheckRequired: false
+thumbTitle: "ChatGPT 로그인 안됨\n가입한 방식으로 다시"
+thumbSubtitle: "화면 보며 따라하기"
+검색어: "ChatGPT 로그인 안됨"
+근거: ["F1"]
+---
+
+ChatGPT 로그인 안됨 문제의 가장 흔한 이유는 처음 가입한 방식과 다른 방식으로 로그인하는 것입니다. 가입 방식부터 맞추고, 그다음 서비스 상태와 크롬 쿠키를 확인합니다.
+
+## 첫째 단계. chatgpt.com에서 로그인 누르기
+
+<Shot
+  id="home"
+  src="/posts/chatgpt-login-error/chatgpt-home-login-button.webp"
+  alt="ChatGPT 첫 화면 오른쪽 위 로그인 버튼에 주황색 상자와 파란 번호가 표시되어 있습니다."
+  caption="오른쪽 위의 '로그인'을 누릅니다."
+  type="capture"
+  badge={false}
+/>
+
+크롬 주소창에 chatgpt.com 을 입력하고 Enter를 누릅니다. 오른쪽 위의 '로그인'을 누릅니다. '무료로 회원가입'은 누르지 않습니다. 새 계정이 따로 만들어질 수 있습니다.
+
+## 둘째 단계. 처음 가입한 방식 고르기
+
+<Shot
+  id="method"
+  src="/posts/chatgpt-login-error/chatgpt-login-method-select.webp"
+  alt="ChatGPT 로그인 방식 선택 화면 구글 애플 휴대 전화 번호 버튼과 이메일 주소 칸에 파란 번호가 표시되어 있습니다."
+  caption="가입할 때 쓴 방식을 고릅니다."
+  type="capture"
+  badge={false}
+/>
+
+'로그인 또는 회원가입' 창이 뜹니다. 구글로 가입했다면 'Google 계정으로 계속하기'를 누릅니다. 애플로 가입했다면 'Apple 계정으로 계속하기'를 누릅니다.
+
+이메일로 가입했다면 아래 '이메일 주소' 칸에 그 주소를 넣고 '계속'을 누릅니다. 결제 영수증을 받는 메일과 다를 수 있습니다. 처음 OpenAI 환영 메일이 온 메일함의 주소를 씁니다.
+
+애플의 '나의 이메일 가리기'로 가입했다면 내 메일 주소로는 들어가지지 않습니다. 꼭 'Apple 계정으로 계속하기'를 누릅니다. 다른 방식으로 시도하면 Wrong authentication method 같은 문구가 뜰 수 있습니다.
+
+## 셋째 단계. 서비스 상태 확인
+
+<Shot
+  id="status"
+  src="/posts/chatgpt-login-error/openai-status-page-check.webp"
+  alt="OpenAI 서비스 상태 페이지 확인 화면. 전체 상태 안내와 ChatGPT 줄에 파란 번호가 표시되어 있습니다."
+  caption="맨 위 안내와 ChatGPT 줄을 확인합니다."
+  type="capture"
+  badge={false}
+/>
+
+새 탭에서 status.openai.com 을 엽니다. 맨 위에 초록색 We're fully operational이 보이면 정상입니다. 노란색이나 빨간색 안내가 보이면 OpenAI 쪽 장애입니다. 이때는 내 설정을 바꾸지 말고 잠시 뒤 다시 로그인합니다.
+
+## 넷째 단계. chatgpt.com 쿠키 지우기
+
+<Shot
+  id="cookie"
+  src="/posts/chatgpt-login-error/chrome-delete-chatgpt-site-data.webp"
+  alt="크롬 설정 모든 사이트 화면에서 chatgpt 검색 칸과 chatgpt.com 휴지통 버튼에 파란 번호가 표시되어 있습니다."
+  caption="chatgpt를 검색하고 휴지통을 누릅니다."
+  type="capture"
+  badge={false}
+/>
+
+주소창에 chrome://settings/content/all 을 입력하고 Enter를 누릅니다. 오른쪽 위 검색 칸에 chatgpt 를 입력합니다. chatgpt.com 오른쪽의 휴지통을 누르고 '삭제'를 누릅니다.
+
+ChatGPT 탭을 닫고 chatgpt.com 을 다시 엽니다. 첫째 단계부터 다시 로그인합니다. 다른 사이트의 로그인은 풀리지 않습니다.
+
+## 그래도 안 되면
+
+크롬에서 Ctrl + Shift + N을 눌러 시크릿 창을 엽니다. 시크릿 창에서 로그인되면 확장 프로그램이 원인일 수 있습니다. 광고 차단 확장 프로그램을 잠시 끄고 다시 해 봅니다.
+
+'Checking your browser' 화면이 계속 반복되면 VPN을 잠시 끕니다. 회사 와이파이라면 휴대폰 데이터로 바꿔서 해 봅니다. 회사 컴퓨터는 설정을 바꾸기 전에 관리자에게 먼저 묻습니다.
+
+## 자주 묻는 질문
+
+비밀번호를 잊었다면 이메일 주소를 넣은 뒤 나오는 비밀번호 화면에서 재설정을 진행합니다. 구글이나 애플로 가입했다면 ChatGPT 비밀번호는 따로 없습니다.
+
+휴대폰 앱에서만 안 되면 같은 계정으로 컴퓨터 웹에서 먼저 로그인해 봅니다. 웹에서는 되면 앱을 지웠다가 다시 설치하고 같은 방식으로 로그인합니다.
+
+어느 계정으로 가입했는지 모르겠다면 메일함에서 OpenAI가 보낸 메일을 찾아봅니다. 그 메일을 받은 주소가 가입 주소입니다.
