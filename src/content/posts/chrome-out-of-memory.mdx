@@ -1,0 +1,152 @@
+---
+title: "크롬 Out of Memory 오류, '앗, 이런!' 뜰 때 메모리 비우는 순서"
+description: "크롬 Out of Memory 오류는 메모리가 모자라 탭이 멈출 때 뜹니다. 새로고침, 작업 관리자로 무거운 탭 닫기, 캐시 삭제 순서로 해결하세요."
+date: "2026-11-26"
+updated: "2026-11-26"
+publishAt: "2026-11-26T14:23"
+draft: false
+category: "apps"
+tags: ["크롬", "Out of Memory", "앗 이런"]
+kind: "error-fix"
+device: "컴퓨터의 Chrome"
+os: "한국어 화면"
+app: "Google Chrome"
+appVersion: "156.0.8078.47"
+verification: "공식 문서 확인"
+verifiedDate: "2026-11-26"
+symptoms: "페이지가 멈추더니 '앗, 이런!' 화면이 뜨고, 오류 코드 줄에 Out of Memory가 적혀 있습니다."
+quickAnswer: "Shift + Esc로 크롬 작업 관리자를 열고, 메모리를 가장 많이 쓰는 탭을 골라 '작업 종료'를 누르세요. 그다음 멈춘 탭에서 '새로고침'을 누르면 됩니다."
+steps:
+  - title: "새로고침 누르기"
+    body: "'앗, 이런!' 화면의 새로고침 버튼을 누릅니다."
+  - title: "작업 관리자로 무거운 탭 닫기"
+    body: "Shift + Esc를 누르고 메모리 사용량이 큰 탭을 골라 작업 종료를 누릅니다."
+  - title: "캐시된 이미지 및 파일 지우기"
+    body: "인터넷 사용 기록 삭제 창에서 캐시된 이미지 및 파일만 체크하고 삭제합니다."
+sources:
+  - title: "Chrome 고객센터, Chrome의 연결 및 로드 오류 해결하기"
+    url: "https://support.google.com/chrome/answer/6098869?hl=ko"
+heroImage: "/thumb/posts/chrome-out-of-memory/card.png"
+images:
+  - id: "symptom"
+    src: "/posts/chrome-out-of-memory/chrome-out-of-memory-aw-snap-screen.webp"
+    alt: "크롬 탭이 멈춘 뒤 뜬 앗 이런 화면에서 제목과 오류 코드 줄에 주황색 상자와 파란 번호가 표시되어 있습니다."
+    caption: "'앗, 이런!' 제목과 오류 코드 줄을 확인합니다."
+    type: "capture"
+    badge: false
+  - id: "reload"
+    src: "/posts/chrome-out-of-memory/chrome-aw-snap-reload-button.webp"
+    alt: "크롬 앗 이런 화면 오른쪽의 새로고침 버튼에 주황색 상자와 화살표, 파란 번호가 표시되어 있습니다."
+    caption: "오른쪽의 '새로고침'을 누릅니다."
+    type: "capture"
+    badge: false
+  - id: "taskmgr"
+    src: "/posts/chrome-out-of-memory/chrome-task-manager-end-process.webp"
+    alt: "크롬 작업 관리자에서 메모리 사용량 제목, 메모리를 가장 많이 쓰는 탭, 작업 종료 버튼에 파란 번호가 표시되어 있습니다."
+    caption: "메모리 사용량이 큰 탭을 골라 '작업 종료'를 누릅니다."
+    type: "capture"
+    badge: false
+  - id: "cache"
+    src: "/posts/chrome-out-of-memory/chrome-clear-cached-images-files.webp"
+    alt: "크롬 인터넷 사용 기록 삭제 창에서 기간 버튼, 캐시된 이미지 및 파일 체크, 이 기기에서 삭제 버튼에 파란 번호가 표시되어 있습니다."
+    caption: "캐시된 이미지 및 파일만 체크하고 삭제합니다."
+    type: "capture"
+    badge: false
+featured: false
+articleId: "tech-0014"
+reproduced: false
+dataLossRisk: false
+recheckRequired: false
+thumbTitle: "크롬 Out of Memory\n메모리 비우는 순서"
+thumbSubtitle: "화면 보며 따라하기"
+검색어: "크롬 Out of Memory"
+근거: ["F1"]
+---
+
+크롬 Out of Memory 오류는 컴퓨터 메모리가 모자라 탭이 강제로 멈출 때 뜹니다. 메모리를 많이 쓰는 탭을 닫고, 멈춘 탭을 새로고침하면 대부분 바로 풀립니다.
+
+## 증상
+
+<Shot
+  id="symptom"
+  src="/posts/chrome-out-of-memory/chrome-out-of-memory-aw-snap-screen.webp"
+  alt="크롬 탭이 멈춘 뒤 뜬 앗 이런 화면에서 제목과 오류 코드 줄에 주황색 상자와 파란 번호가 표시되어 있습니다."
+  caption="'앗, 이런!' 제목과 오류 코드 줄을 확인합니다."
+  type="capture"
+  badge={false}
+/>
+
+보던 페이지가 멈추고 '앗, 이런!' 화면으로 바뀝니다. 그 아래 '오류 코드' 줄에 Out of Memory가 적혀 있으면 메모리 부족입니다. 다른 코드가 적혀 있어도 아래 순서는 똑같이 해 볼 수 있습니다.
+
+## 원인
+
+탭을 많이 열어 두거나, 동영상 편집·지도·웹 게임처럼 무거운 페이지를 켜 두면 메모리가 바닥납니다. 그러면 크롬이 그 탭을 멈춥니다. 확장 프로그램이 메모리를 많이 쓰는 경우도 있습니다.
+
+## 첫째 단계. 새로고침 누르기
+
+<Shot
+  id="reload"
+  src="/posts/chrome-out-of-memory/chrome-aw-snap-reload-button.webp"
+  alt="크롬 앗 이런 화면 오른쪽의 새로고침 버튼에 주황색 상자와 화살표, 파란 번호가 표시되어 있습니다."
+  caption="오른쪽의 '새로고침'을 누릅니다."
+  type="capture"
+  badge={false}
+/>
+
+'앗, 이런!' 화면 오른쪽의 '새로고침'을 누릅니다. 한 번에 다시 열리면 끝입니다. 금방 또 멈추면 다음 단계로 갑니다.
+
+## 둘째 단계. 작업 관리자로 무거운 탭 닫기
+
+<Shot
+  id="taskmgr"
+  src="/posts/chrome-out-of-memory/chrome-task-manager-end-process.webp"
+  alt="크롬 작업 관리자에서 메모리 사용량 제목, 메모리를 가장 많이 쓰는 탭, 작업 종료 버튼에 파란 번호가 표시되어 있습니다."
+  caption="메모리 사용량이 큰 탭을 골라 '작업 종료'를 누릅니다."
+  type="capture"
+  badge={false}
+/>
+
+키보드에서 Shift + Esc를 누릅니다. 크롬 작업 관리자가 뜹니다.
+
+'메모리 사용량' 제목을 누릅니다. 숫자가 큰 순서로 줄이 바뀝니다.
+
+숫자가 가장 큰 탭을 한 번 누릅니다. 오른쪽 아래 '작업 종료'를 누릅니다. 지금 안 쓰는 탭부터 닫습니다. 쓰던 글이 있는 탭은 먼저 저장합니다.
+
+닫은 뒤 멈췄던 탭으로 돌아가 '새로고침'을 누릅니다.
+
+## 셋째 단계. 캐시된 이미지 및 파일 지우기
+
+<Shot
+  id="cache"
+  src="/posts/chrome-out-of-memory/chrome-clear-cached-images-files.webp"
+  alt="크롬 인터넷 사용 기록 삭제 창에서 기간 버튼, 캐시된 이미지 및 파일 체크, 이 기기에서 삭제 버튼에 파란 번호가 표시되어 있습니다."
+  caption="캐시된 이미지 및 파일만 체크하고 삭제합니다."
+  type="capture"
+  badge={false}
+/>
+
+키보드에서 Ctrl + Shift + Delete를 누릅니다. '인터넷 사용 기록 삭제' 창이 뜹니다.
+
+위쪽 기간 버튼에서 '더보기'를 누르고 '전체 기간'을 고릅니다.
+
+'캐시된 이미지 및 파일'만 체크합니다. 방문 기록과 쿠키는 체크를 끕니다. 그래야 사이트 로그인이 풀리지 않습니다.
+
+'이 기기에서 삭제'를 누릅니다. 크롬을 닫았다가 다시 열고 그 페이지를 엽니다.
+
+## 그래도 안 되면
+
+주소창에 chrome://extensions 를 입력하고 Enter를 누릅니다. 확장 프로그램 스위치를 모두 끄고 다시 해 봅니다. 괜찮아지면 하나씩 켜면서 범인을 찾습니다.
+
+크롬 밖의 프로그램도 메모리를 씁니다. 안 쓰는 프로그램을 닫고 컴퓨터를 다시 시작합니다.
+
+자주 멈추면 주소창에 chrome://settings/performance 를 입력합니다. '메모리 절약'을 켜면 오래 안 본 탭의 메모리를 크롬이 알아서 비웁니다.
+
+크롬 전체가 느려졌다면 [크롬 느림 해결 순서](/chrome-slow/)도 함께 봅니다.
+
+## 자주 묻는 질문
+
+새로고침하면 쓰던 내용이 사라지나요? 저장하지 않은 입력 내용은 사라질 수 있습니다. 글을 쓰던 사이트라면 임시 저장 목록을 먼저 확인합니다.
+
+엣지에서도 같은 오류가 뜨나요? 엣지도 크롬과 같은 방식으로 탭을 띄워서 같은 코드가 뜰 수 있습니다. 엣지에서도 Shift + Esc로 작업 관리자를 열고 같은 순서로 하면 됩니다.
+
+특정 사이트에서만 계속 뜨면 어떻게 하나요? 그 사이트가 메모리를 많이 쓰는 경우입니다. 그 사이트를 쓸 때는 다른 탭을 닫아 둡니다.
