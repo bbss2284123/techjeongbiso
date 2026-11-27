@@ -1,0 +1,6 @@
+facts:
+  - id: F1
+    value: "156.0.8078.47"
+    source: "https://support.google.com/chrome/answer/6098869?hl=ko"
+    checkedAt: "2026-11-27"
+    note: "이번 화면에 쓴 한국어 Chrome 버전. 탭 렌더러 비정상 종료 '앗, 이런!' 화면(오류 코드 줄은 Windows 표기 STATUS_ACCESS_VIOLATION으로 재현), Chrome 정보(chrome://settings/help), 시크릿 창(Ctrl+Shift+N), 시스템 설정 '가능한 경우 그래픽 가속 사용'·다시 시작 버튼에서 확인. 공식 도움말 3단계: Chrome 업데이트 및 다시 시작, 4단계: 시크릿 모드로 탐색, 5단계: 확장 프로그램 사용 중지."

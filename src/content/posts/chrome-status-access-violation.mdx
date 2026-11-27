@@ -1,0 +1,150 @@
+---
+title: "크롬 STATUS_ACCESS_VIOLATION 오류, '앗, 이런!' 반복될 때 해결 순서"
+description: "크롬 STATUS_ACCESS_VIOLATION 오류는 탭이 메모리를 잘못 건드려 강제로 멈출 때 뜹니다. 크롬 업데이트, 시크릿 창 확인, 그래픽 가속 끄기 순서로 해결하세요."
+date: "2026-11-27"
+updated: "2026-11-27"
+publishAt: "2026-11-27T14:19"
+draft: false
+category: "apps"
+tags: ["크롬", "STATUS_ACCESS_VIOLATION", "앗 이런"]
+kind: "error-fix"
+device: "컴퓨터의 Chrome"
+os: "한국어 화면"
+app: "Google Chrome"
+appVersion: "156.0.8078.47"
+verification: "공식 문서 확인"
+verifiedDate: "2026-11-27"
+symptoms: "페이지를 열면 '앗, 이런!' 화면이 뜨고, 오류 코드 줄에 STATUS_ACCESS_VIOLATION이 적혀 있습니다."
+quickAnswer: "주소창에 chrome://settings/help 를 넣어 크롬을 최신 버전으로 업데이트하고 '다시 시작'을 누르세요. 그래도 뜨면 시크릿 창에서 열어 보고, 되면 확장 프로그램을 끄면 됩니다."
+steps:
+  - title: "크롬 업데이트하고 다시 시작하기"
+    body: "chrome://settings/help 에서 업데이트를 받고 다시 시작을 누릅니다."
+  - title: "시크릿 창에서 열어 보기"
+    body: "Ctrl + Shift + N으로 시크릿 창을 열고 같은 페이지를 엽니다."
+  - title: "그래픽 가속 끄기"
+    body: "chrome://settings/system 에서 '가능한 경우 그래픽 가속 사용'을 끄고 다시 시작을 누릅니다."
+sources:
+  - title: "Chrome 고객센터, Chrome의 연결 및 로드 오류 해결하기"
+    url: "https://support.google.com/chrome/answer/6098869?hl=ko"
+heroImage: "/thumb/posts/chrome-status-access-violation/card.png"
+images:
+  - id: "symptom"
+    src: "/posts/chrome-status-access-violation/chrome-status-access-violation-screen.webp"
+    alt: "크롬 앗 이런 화면에서 제목과 STATUS_ACCESS_VIOLATION 오류 코드 줄에 주황색 상자와 파란 번호가 표시되어 있습니다."
+    caption: "'앗, 이런!' 제목 아래 오류 코드 줄을 확인합니다."
+    type: "capture"
+    badge: false
+  - id: "update"
+    src: "/posts/chrome-status-access-violation/chrome-version-check-about.webp"
+    alt: "크롬 설정의 Chrome 정보 메뉴와 버전 줄에 주황색 상자와 파란 번호가 표시되어 있습니다."
+    caption: "왼쪽 'Chrome 정보'를 누르고 버전 줄을 확인합니다."
+    type: "capture"
+    badge: false
+  - id: "incognito"
+    src: "/posts/chrome-status-access-violation/chrome-incognito-window-test.webp"
+    alt: "크롬 시크릿 창이 열린 화면에서 오른쪽 위 시크릿 모드 표시와 시크릿 모드로 전환됨 문구에 파란 번호가 표시되어 있습니다."
+    caption: "시크릿 창이 열리면 같은 페이지 주소를 넣어 봅니다."
+    type: "capture"
+    badge: false
+  - id: "gpu"
+    src: "/posts/chrome-status-access-violation/chrome-hardware-acceleration-off.webp"
+    alt: "크롬 설정 시스템 메뉴에서 가능한 경우 그래픽 가속 사용 스위치를 끄고 다시 시작 버튼이 나온 곳에 주황색 상자와 화살표, 파란 번호가 표시되어 있습니다."
+    caption: "'가능한 경우 그래픽 가속 사용'을 끄고 '다시 시작'을 누릅니다."
+    type: "capture"
+    badge: false
+featured: false
+articleId: "tech-0015"
+reproduced: false
+dataLossRisk: false
+recheckRequired: false
+thumbTitle: "크롬 STATUS_ACCESS\n_VIOLATION 해결 순서"
+thumbSubtitle: "화면 보며 따라하기"
+검색어: "크롬 STATUS_ACCESS_VIOLATION"
+근거: ["F1"]
+---
+
+크롬 STATUS_ACCESS_VIOLATION 오류는 탭이 허락되지 않은 메모리를 건드려 크롬이 그 탭을 멈출 때 뜹니다. 크롬을 최신 버전으로 올리고 다시 시작하면 대부분 풀립니다.
+
+## 증상
+
+<Shot
+  id="symptom"
+  src="/posts/chrome-status-access-violation/chrome-status-access-violation-screen.webp"
+  alt="크롬 앗 이런 화면에서 제목과 STATUS_ACCESS_VIOLATION 오류 코드 줄에 주황색 상자와 파란 번호가 표시되어 있습니다."
+  caption="'앗, 이런!' 제목 아래 오류 코드 줄을 확인합니다."
+  type="capture"
+  badge={false}
+/>
+
+페이지가 열리다가 '앗, 이런!' 화면으로 바뀝니다. '오류 코드' 줄에 STATUS_ACCESS_VIOLATION이 적혀 있습니다. 새로고침을 눌러도 같은 화면이 다시 뜹니다.
+
+## 원인
+
+크롬 버전이 오래돼 버그가 남아 있거나, 확장 프로그램이 페이지와 충돌하면 생깁니다. 그래픽 카드 드라이버와 크롬의 그래픽 가속이 맞지 않을 때도 뜹니다. 백신 프로그램이 크롬을 막는 경우도 있습니다.
+
+## 첫째 단계. 크롬 업데이트하고 다시 시작하기
+
+<Shot
+  id="update"
+  src="/posts/chrome-status-access-violation/chrome-version-check-about.webp"
+  alt="크롬 설정의 Chrome 정보 메뉴와 버전 줄에 주황색 상자와 파란 번호가 표시되어 있습니다."
+  caption="왼쪽 'Chrome 정보'를 누르고 버전 줄을 확인합니다."
+  type="capture"
+  badge={false}
+/>
+
+주소창에 chrome://settings/help 를 입력하고 Enter를 누릅니다. 'Chrome 정보' 화면이 열립니다.
+
+업데이트가 있으면 크롬이 알아서 받습니다. 다 받으면 '다시 시작' 버튼이 뜹니다. 그 버튼을 누릅니다.
+
+'최신 버전입니다'라고만 나오면 크롬 창을 모두 닫고 다시 엽니다. 그리고 그 페이지를 다시 엽니다.
+
+## 둘째 단계. 시크릿 창에서 열어 보기
+
+<Shot
+  id="incognito"
+  src="/posts/chrome-status-access-violation/chrome-incognito-window-test.webp"
+  alt="크롬 시크릿 창이 열린 화면에서 오른쪽 위 시크릿 모드 표시와 시크릿 모드로 전환됨 문구에 파란 번호가 표시되어 있습니다."
+  caption="시크릿 창이 열리면 같은 페이지 주소를 넣어 봅니다."
+  type="capture"
+  badge={false}
+/>
+
+키보드에서 Ctrl + Shift + N을 누릅니다. 검은 시크릿 창이 열립니다.
+
+오류가 났던 페이지 주소를 넣고 엽니다. 시크릿 창에서는 확장 프로그램이 꺼진 채로 열립니다.
+
+시크릿 창에서 잘 열리면 확장 프로그램이 원인입니다. 주소창에 chrome://extensions 를 입력합니다. 확장 프로그램 스위치를 모두 끄고 다시 열어 봅니다. 괜찮으면 하나씩 켜면서 범인을 찾습니다.
+
+## 셋째 단계. 그래픽 가속 끄기
+
+<Shot
+  id="gpu"
+  src="/posts/chrome-status-access-violation/chrome-hardware-acceleration-off.webp"
+  alt="크롬 설정 시스템 메뉴에서 가능한 경우 그래픽 가속 사용 스위치를 끄고 다시 시작 버튼이 나온 곳에 주황색 상자와 화살표, 파란 번호가 표시되어 있습니다."
+  caption="'가능한 경우 그래픽 가속 사용'을 끄고 '다시 시작'을 누릅니다."
+  type="capture"
+  badge={false}
+/>
+
+주소창에 chrome://settings/system 을 입력하고 Enter를 누릅니다. 왼쪽에서 '시스템'이 선택된 화면이 열립니다.
+
+'가능한 경우 그래픽 가속 사용' 스위치를 눌러 끕니다. 옆에 '다시 시작' 버튼이 뜹니다. 그 버튼을 누릅니다.
+
+크롬이 다시 열리면 그 페이지를 엽니다. 동영상이나 지도가 버벅이면 나중에 스위치를 다시 켭니다.
+
+## 그래도 안 되면
+
+컴퓨터를 다시 시작합니다. 오래 켜 둔 컴퓨터는 이것만으로 풀리기도 합니다.
+
+백신 프로그램을 잠시 끄고 열어 봅니다. 열리면 백신 설정에서 크롬을 예외로 등록합니다. 확인이 끝나면 백신은 다시 켭니다.
+
+같은 오류가 Microsoft Edge에서도 뜨면 그래픽 카드 드라이버를 최신으로 올립니다. 오류 코드 줄에 Out of Memory가 보이면 [크롬 Out of Memory 해결 순서](/chrome-out-of-memory/)를 봅니다.
+
+## 자주 묻는 질문
+
+바이러스에 걸린 건가요? 대부분은 아닙니다. 크롬이 이상한 동작을 막으려고 탭을 멈춘 것입니다. 걱정되면 백신으로 검사를 한 번 해 봅니다.
+
+특정 사이트에서만 뜨면 어떻게 하나요? 그 사이트 문제일 수 있습니다. 시크릿 창과 다른 브라우저에서 열어 보고, 둘 다 안 되면 잠시 뒤 다시 엽니다.
+
+크롬을 지우고 다시 깔아야 하나요? 위 단계를 다 해도 계속 뜰 때만 해 봅니다. 북마크는 구글 계정 동기화를 켜 두면 남습니다.
