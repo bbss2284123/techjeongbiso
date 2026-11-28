@@ -1,0 +1,6 @@
+facts:
+  - id: F1
+    value: "gemini.google.com"
+    source: "https://support.google.com/gemini/answer/13278668?hl=ko"
+    checkedAt: "2026-11-28"
+    note: "한국어 Chrome 156.0.8078.47 화면. gemini.google.com에서 응답 연결이 끊겼을 때 '문제가 발생했습니다 (4)' 알림과 입력창에 되돌아온 질문, Google Workspace 상태 대시보드 Gemini 줄, 시크릿 창(Ctrl+Shift+N), chrome://settings/content/all 검색, 로그인 버튼에서 확인. 공식 도움말: 로그인하지 않아도 일부 기능 사용 가능, 접속·로그인 중 '문제가 발생했습니다'는 위치·연령·계정 유형 등으로 현재 계정이 앱에 액세스할 수 없다는 뜻이며 나중에 다시 시도."

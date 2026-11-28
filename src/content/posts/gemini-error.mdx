@@ -1,0 +1,204 @@
+---
+title: "제미나이 오류 '문제가 발생했습니다' 뜰 때 해결 순서"
+description: "제미나이 오류 '문제가 발생했습니다'가 뜨면 질문을 한 번 더 보내고, 구글 상태 페이지와 시크릿 창, 사이트 데이터 삭제, 로그인 순서로 확인하세요. 컴퓨터 크롬 화면으로 정리했습니다."
+date: "2026-11-28"
+updated: "2026-11-28"
+publishAt: "2026-11-28T10:36"
+draft: false
+category: "ai"
+tags: ["제미나이", "Gemini", "문제가 발생했습니다"]
+kind: "error-fix"
+device: "컴퓨터의 Chrome"
+os: "한국어 화면"
+app: "Gemini 웹"
+appVersion: "gemini.google.com"
+verification: "공식 문서 확인"
+verifiedDate: "2026-11-28"
+symptoms: "질문을 보냈는데 답이 안 나오고, 화면 오른쪽 위에 '문제가 발생했습니다 (4)'처럼 괄호 속 숫자가 붙은 알림이 뜹니다."
+quickAnswer: "입력창에 되돌아온 질문을 그대로 두고 전송 화살표를 한 번 더 누르세요. 그래도 같은 알림이 뜨면 크롬 시크릿 창(Ctrl + Shift + N)에서 gemini.google.com을 열어 다시 물어보면 됩니다."
+steps:
+  - title: "질문 다시 보내기"
+    body: "입력창에 되돌아온 질문을 확인하고 전송 화살표를 누릅니다."
+  - title: "구글 상태 페이지 확인"
+    body: "Google Workspace 상태 대시보드에서 Gemini 줄의 표시를 봅니다."
+  - title: "시크릿 창에서 열기"
+    body: "Ctrl + Shift + N으로 시크릿 창을 열고 gemini.google.com에서 다시 묻습니다."
+  - title: "사이트 데이터 지우기"
+    body: "크롬 설정의 모든 사이트에서 gemini를 검색하고 휴지통을 누릅니다."
+  - title: "로그인하고 다시 묻기"
+    body: "오른쪽 위 로그인 버튼을 누르고 내 구글 계정으로 들어갑니다."
+sources:
+  - title: "Gemini 앱 고객센터, Gemini 앱에 로그인하는 데 필요한 항목"
+    url: "https://support.google.com/gemini/answer/13278668?hl=ko"
+  - title: "Google Workspace 상태 대시보드"
+    url: "https://www.google.com/appsstatus/dashboard/?hl=ko"
+heroImage: "/thumb/posts/gemini-error/card.png"
+images:
+  - id: "symptom"
+    src: "/posts/gemini-error/gemini-error-something-went-wrong.webp"
+    alt: "제미나이 오류로 화면 오른쪽 위에 '문제가 발생했습니다 (4)' 알림이 뜬 모습에 주황색 상자와 화살표, 파란 번호가 표시되어 있습니다."
+    caption: "오른쪽 위에 '문제가 발생했습니다'와 괄호 속 숫자가 뜹니다."
+    type: "capture"
+    badge: false
+  - id: "resend"
+    src: "/posts/gemini-error/gemini-error-resend-prompt.webp"
+    alt: "제미나이 입력창에 되돌아온 질문과 오른쪽 전송 화살표 버튼에 주황색 상자와 파란 번호가 표시되어 있습니다."
+    caption: "되돌아온 질문을 확인하고 전송 화살표를 누릅니다."
+    type: "capture"
+    badge: false
+  - id: "status"
+    src: "/posts/gemini-error/gemini-error-workspace-status.webp"
+    alt: "Google Workspace 상태 대시보드에서 Gemini 줄과 오른쪽 초록색 사용 가능 표시에 주황색 상자와 파란 번호가 표시되어 있습니다."
+    caption: "Gemini 줄 끝 표시가 초록색 체크면 정상입니다."
+    type: "capture"
+    badge: false
+  - id: "incognito"
+    src: "/posts/gemini-error/gemini-error-incognito-window.webp"
+    alt: "크롬 시크릿 창에서 연 제미나이 화면의 시크릿 모드 표시와 질문 입력창에 주황색 상자와 파란 번호가 표시되어 있습니다."
+    caption: "시크릿 창에서 제미나이를 열고 다시 물어봅니다."
+    type: "capture"
+    badge: false
+  - id: "sitedata"
+    src: "/posts/gemini-error/gemini-error-delete-site-data.webp"
+    alt: "크롬 설정 모든 사이트 화면에서 gemini 검색칸, google.com 항목, 휴지통 버튼에 파란 번호가 표시되어 있습니다."
+    caption: "gemini를 검색하고 나온 항목의 휴지통을 누릅니다."
+    type: "capture"
+    badge: false
+  - id: "signin"
+    src: "/posts/gemini-error/gemini-error-sign-in-button.webp"
+    alt: "제미나이 화면 오른쪽 위와 왼쪽 아래의 로그인 버튼에 주황색 상자와 파란 번호가 표시되어 있습니다."
+    caption: "오른쪽 위나 왼쪽 아래의 '로그인'을 누릅니다."
+    type: "capture"
+    badge: false
+featured: false
+articleId: "tech-0016"
+reproduced: false
+dataLossRisk: false
+recheckRequired: false
+thumbTitle: "제미나이 오류\n'문제가 발생했습니다'"
+thumbSubtitle: "화면 보며 따라하기"
+검색어: "제미나이 오류"
+근거: ["F1"]
+---
+
+제미나이 오류 '문제가 발생했습니다'는 답을 받아 오는 연결이 중간에 끊길 때 자주 뜹니다. 질문을 한 번 더 보내고, 안 되면 시크릿 창에서 열면 대부분 풀립니다.
+
+## 증상
+
+<Shot
+  id="symptom"
+  src="/posts/gemini-error/gemini-error-something-went-wrong.webp"
+  alt="제미나이 오류로 화면 오른쪽 위에 '문제가 발생했습니다 (4)' 알림이 뜬 모습에 주황색 상자와 화살표, 파란 번호가 표시되어 있습니다."
+  caption="오른쪽 위에 '문제가 발생했습니다'와 괄호 속 숫자가 뜹니다."
+  type="capture"
+  badge={false}
+/>
+
+질문을 보냈는데 답이 나오지 않습니다. 화면 오른쪽 위에 '문제가 발생했습니다 (4)' 같은 알림이 뜹니다. 괄호 속 숫자는 상황마다 다를 수 있습니다. 보낸 질문은 입력창으로 되돌아옵니다.
+
+## 원인
+
+답을 받아 오는 도중 인터넷 연결이 끊기면 이 알림이 뜹니다. 구글 서버에 장애가 났을 때도 똑같이 뜹니다. 크롬에 쌓인 사이트 데이터나 확장 프로그램이 방해하기도 합니다. 로그인하려 할 때 뜨면 지금 계정으로는 제미나이를 쓸 수 없다는 뜻일 수 있습니다.
+
+괄호 속 숫자의 뜻은 구글 공식 도움말에 나와 있지 않습니다. 숫자와 상관없이 아래 순서대로 해 봅니다.
+
+## 첫째 단계. 질문 다시 보내기
+
+<Shot
+  id="resend"
+  src="/posts/gemini-error/gemini-error-resend-prompt.webp"
+  alt="제미나이 입력창에 되돌아온 질문과 오른쪽 전송 화살표 버튼에 주황색 상자와 파란 번호가 표시되어 있습니다."
+  caption="되돌아온 질문을 확인하고 전송 화살표를 누릅니다."
+  type="capture"
+  badge={false}
+/>
+
+입력창에 내 질문이 그대로 남아 있는지 봅니다. 긴 질문이면 먼저 복사해 둡니다.
+
+오른쪽 끝의 전송 화살표를 누릅니다. 답이 나오면 끝입니다.
+
+같은 대화에서만 계속 뜨면 왼쪽 위 '새 채팅'을 누르고 짧게 다시 물어봅니다.
+
+## 둘째 단계. 구글 상태 페이지 확인
+
+<Shot
+  id="status"
+  src="/posts/gemini-error/gemini-error-workspace-status.webp"
+  alt="Google Workspace 상태 대시보드에서 Gemini 줄과 오른쪽 초록색 사용 가능 표시에 주황색 상자와 파란 번호가 표시되어 있습니다."
+  caption="Gemini 줄 끝 표시가 초록색 체크면 정상입니다."
+  type="capture"
+  badge={false}
+/>
+
+[Google Workspace 상태 대시보드](https://www.google.com/appsstatus/dashboard/?hl=ko)를 엽니다.
+
+아래로 내려 'Gemini' 줄을 찾습니다. 줄 끝이 초록색 체크면 정상입니다. 주황색 느낌표나 빨간 X면 구글 쪽 장애입니다. 이때는 내 컴퓨터에서 할 일이 없습니다. 잠시 뒤 다시 해 봅니다.
+
+## 셋째 단계. 시크릿 창에서 열기
+
+<Shot
+  id="incognito"
+  src="/posts/gemini-error/gemini-error-incognito-window.webp"
+  alt="크롬 시크릿 창에서 연 제미나이 화면의 시크릿 모드 표시와 질문 입력창에 주황색 상자와 파란 번호가 표시되어 있습니다."
+  caption="시크릿 창에서 제미나이를 열고 다시 물어봅니다."
+  type="capture"
+  badge={false}
+/>
+
+크롬에서 Ctrl + Shift + N을 누릅니다. 오른쪽 위에 '시크릿 모드'가 보이는 검은 창이 뜹니다.
+
+주소창에 gemini.google.com 을 입력하고 Enter를 누릅니다. 입력창에 같은 질문을 넣고 보냅니다.
+
+시크릿 창에서는 잘 되면 원래 창의 사이트 데이터나 확장 프로그램이 원인입니다. 다음 단계로 갑니다.
+
+## 넷째 단계. 사이트 데이터 지우기
+
+<Shot
+  id="sitedata"
+  src="/posts/gemini-error/gemini-error-delete-site-data.webp"
+  alt="크롬 설정 모든 사이트 화면에서 gemini 검색칸, google.com 항목, 휴지통 버튼에 파란 번호가 표시되어 있습니다."
+  caption="gemini를 검색하고 나온 항목의 휴지통을 누릅니다."
+  type="capture"
+  badge={false}
+/>
+
+원래 크롬 창의 주소창에 chrome://settings/content/all 을 입력하고 Enter를 누릅니다.
+
+오른쪽 위 검색칸에 gemini 를 입력합니다. google.com 항목이 나옵니다.
+
+항목 오른쪽 휴지통을 누릅니다. 'gemini.google.com의 사이트 데이터 및 권한을 삭제하시겠습니까?' 창이 뜨면 '삭제'를 누릅니다.
+
+제미나이에서 로그아웃되니 다시 로그인하면 됩니다. 제미나이 탭을 새로고침하고 질문을 다시 보냅니다.
+
+## 다섯째 단계. 로그인하고 다시 묻기
+
+<Shot
+  id="signin"
+  src="/posts/gemini-error/gemini-error-sign-in-button.webp"
+  alt="제미나이 화면 오른쪽 위와 왼쪽 아래의 로그인 버튼에 주황색 상자와 파란 번호가 표시되어 있습니다."
+  caption="오른쪽 위나 왼쪽 아래의 '로그인'을 누릅니다."
+  type="capture"
+  badge={false}
+/>
+
+로그인하지 않으면 제미나이의 일부 기능만 쓸 수 있습니다. 오른쪽 위나 왼쪽 아래 '로그인'을 누릅니다.
+
+내 구글 계정을 고르고 비밀번호를 넣습니다. 들어가면 질문을 다시 보냅니다.
+
+로그인할 때 '문제가 발생했습니다'가 뜨면 지금 계정으로는 쓸 수 없는 상태입니다. 회사·학교 계정이면 개인 구글 계정으로 바꿔 해 봅니다.
+
+## 그래도 안 되면
+
+주소창에 chrome://extensions 를 입력하고 Enter를 누릅니다. 광고 차단 같은 확장 프로그램 스위치를 끄고 다시 해 봅니다.
+
+VPN을 쓰고 있으면 끄고 다시 해 봅니다. 와이파이가 불안하면 다른 네트워크로 바꿔 봅니다.
+
+ChatGPT도 함께 안 되면 [ChatGPT 로그인 안됨 해결 순서](/chatgpt-login-error/)도 봅니다.
+
+## 자주 묻는 질문
+
+괄호 속 숫자마다 해결법이 다른가요? 구글은 숫자별 뜻을 공개하지 않았습니다. 숫자와 상관없이 다시 보내기, 상태 확인, 시크릿 창 순서로 하면 됩니다.
+
+휴대폰 제미나이 앱에서도 같은 오류가 뜨나요? 앱에서도 같은 문구가 뜰 수 있습니다. 와이파이와 데이터를 바꿔 보고, 앱을 최신 버전으로 업데이트한 뒤 다시 엽니다.
+
+대화 내용이 사라지나요? 로그인한 상태라면 이전 대화는 왼쪽 목록에 남아 있습니다. 로그인하지 않고 쓴 대화는 저장되지 않습니다.
