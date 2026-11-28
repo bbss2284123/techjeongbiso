@@ -1,0 +1,11 @@
+facts:
+  - id: F1
+    value: "Ctrl + Shift + Esc"
+    source: "https://support.microsoft.com/ko-kr/windows/windows%EC%97%90%EC%84%9C-pc-%EC%84%B1%EB%8A%A5%EC%9D%84-%ED%96%A5%EC%83%81%EC%8B%9C%ED%82%A4%EA%B8%B0-%EC%9C%84%ED%95%9C-%ED%8C%81-b3b3ef5b-5953-fb6a-2528-4bbed82fba96"
+    checkedAt: "2026-11-28"
+    note: "Microsoft 지원 'Windows에서 PC 성능을 개선하는 팁'(Windows 11). Ctrl+Shift+Esc로 작업 관리자, 프로세스 탭에서 CPU·메모리·디스크 사용량 확인, 왼쪽 메뉴 시작 앱에서 앱을 오른쪽 단추로 눌러 사용 안 함. 시작>설정>Windows 업데이트. 시작>설정>개인 정보 및 보안>Windows 보안>바이러스 및 위협 방지>빠른 검사. 시작>설정>시스템>저장소>임시 파일>파일 제거. 드라이브 조각 모음 및 최적화에서 드라이브 선택 후 최적화. 이미지는 공식 문서의 메뉴 이름으로 다시 그린 단계 도식."
+  - id: F2
+    value: "100%"
+    source: "https://support.microsoft.com/ko-kr/windows/windows%EC%97%90%EC%84%9C-pc-%EC%84%B1%EB%8A%A5%EC%9D%84-%ED%96%A5%EC%83%81%EC%8B%9C%ED%82%A4%EA%B8%B0-%EC%9C%84%ED%95%9C-%ED%8C%81-b3b3ef5b-5953-fb6a-2528-4bbed82fba96"
+    checkedAt: "2026-11-28"
+    note: "검색어 '디스크 사용량 100%'. 작업 관리자 프로세스 탭의 디스크 열 위에 전체 디스크 사용률이 퍼센트로 표시되며, 공식 문서는 디스크 사용량 모니터링으로 성능을 저하시키는 프로세스를 식별하라고 안내."
