@@ -153,7 +153,7 @@ export const siteConfig = {
     },
   },
   /** TODO: GA4 측정 ID (G- 로 시작). 비우면 분석 스크립트를 넣지 않습니다. */
-  ga4Id: "",
+  ga4Id: "G-97XXC5PSEQ",
   /** TODO: Cloudflare Web Analytics 토큰. 비우면 비콘을 넣지 않습니다. */
   cloudflareWebAnalyticsToken: "",
   verification: {
